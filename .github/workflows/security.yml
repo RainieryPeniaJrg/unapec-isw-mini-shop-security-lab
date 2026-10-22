@@ -1,0 +1,61 @@
+name: security
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  checks:
+    runs-on: ubuntu-latest
+    services:
+      postgres:
+        image: postgres:18-alpine
+        env:
+          POSTGRES_DB: minishop
+          POSTGRES_USER: minishop
+          POSTGRES_PASSWORD: local-test-password
+        ports:
+          - 5432:5432
+        options: >-
+          --health-cmd "pg_isready -U minishop -d minishop"
+          --health-interval 5s
+          --health-timeout 3s
+          --health-retries 10
+    env:
+      ConnectionStrings__Shop: Host=localhost;Port=5432;Database=minishop;Username=minishop;Password=local-test-password
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: 10.0.x
+      - name: SCA with NuGet audit
+        run: dotnet list src/MiniShop.Api/MiniShop.Api.csproj package --vulnerable --include-transitive
+        continue-on-error: true # Informational at baseline; make blocking after dependency review.
+      - run: dotnet test tests/MiniShop.Api.Tests/MiniShop.Api.Tests.csproj
+      - name: SAST with Semgrep
+        uses: semgrep/semgrep-action@v1
+        continue-on-error: true # Baseline stage: turn into a blocking gate after the Red Team findings are remediated.
+      - name: Dependency review
+        uses: actions/dependency-review-action@v4
+        continue-on-error: true # Enable blocking after the initial dependency baseline is reviewed.
+      - name: Build image
+        run: docker build -t unapec-minishop:${{ github.sha }} .
+      - name: Scan image with Trivy
+        uses: aquasecurity/trivy-action@0.28.0
+        with:
+          image-ref: unapec-minishop:${{ github.sha }}
+          format: table
+          exit-code: '1'
+          ignore-unfixed: true
+          vuln-type: os,library
+          severity: CRITICAL
+      - name: Start app
+        run: docker compose up -d --build
+      - name: DAST baseline with ZAP
+        uses: zaproxy/action-baseline@v0.14.0
+        with:
+          target: http://127.0.0.1:5080
+          fail_action: false # Informational until the Blue Team gate is introduced.
+      - if: always()
+        run: docker compose down -v

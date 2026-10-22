@@ -1,0 +1,97 @@
+# Secrets and machine-specific configuration
+.env
+.env.*
+!.env.example
+appsettings.*.Local.json
+secrets.json
+*.pem
+*.key
+*.pfx
+*.p12
+*.crt
+*.cer
+*.jks
+*.keystore
+
+# .NET build output and test results
+**/bin/
+**/obj/
+TestResults/
+*.trx
+*.coverage
+*.coveragexml
+coverage/
+coverage-report/
+
+# IDE/editor files
+.vs/
+.idea/
+.vscode/
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+*.swp
+*.swo
+*~
+
+# Python local environments and caches (PoC helpers)
+.venv/
+venv/
+env/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+
+# Docker and local runtime data
+docker-data/
+postgres-data/
+*.log
+
+# Pentest tool state, raw exports, generated reports and attack output
+artifacts/
+reports/
+burp-projects/
+*.burp
+*.burpconfig
+.ZAP/
+docs/fase1/evidencias/raw/
+docs/fase1/evidencias/private/
+docs/fase1/evidencias/**/*.burp
+docs/fase1/evidencias/**/*.session
+docs/fase1/evidencias/**/*.har
+docs/fase1/evidencias/**/*token*
+docs/fase1/evidencias/**/*cookie*
+docs/fase1/evidencias/**/*password*
+*.mp4
+*.mov
+*.mkv
+*.webm
+
+# Virtual machine files and snapshots
+*.vmdk
+*.vdi
+*.vhd
+*.vhdx
+*.vbox
+*.vbox-prev
+*.vmx
+*.vmxf
+*.nvram
+*.vmsd
+*.vmsn
+*.vmem
+*.sav
+*.ova
+*.ovf
+Snapshots/
+
+# OS-generated files
+.DS_Store
+Thumbs.db
+Desktop.ini
+
+# Codex/workspace-local metadata
+.codex/

@@ -1,8 +1,10 @@
 # UNAPEC ISW — Mini Shop Security Lab
 
-Laboratorio académico de seguridad de software para el segundo parcial de UNAPEC. El equipo desarrollará una mini tienda .NET, modelará sus amenazas y demostrará cinco vulnerabilidades en un entorno local controlado. Este repositorio incluye un scaffold inicial y la documentación de preparación; la app funcional y los PoC todavía deben completarse según la matriz de entregables.
+Laboratorio académico de seguridad de software para el segundo parcial de UNAPEC. La aplicación de Fase 1 es una mini tienda ASP.NET Core MVC/Razor y API con PostgreSQL: login, catálogo, comentarios, carrito, pedidos y paneles de Vendedor/Admin. El perfil Red Team contiene los cinco escenarios vulnerables definidos en la documentación. La Fase 2 queda fuera del desarrollo actual.
 
-> **Aviso:** el perfil Red Team tendrá vulnerabilidades intencionales. No despliegues esta aplicación en Internet, en una red del campus ni en un entorno con datos reales. Solo se prueba contra la instancia local propia y con cuentas ficticias.
+La evidencia manual Burp/ZAP, el informe con CVSS, el video y el tag de entrega requieren completar la revisión académica; no se consideran entregados por disponer del código y las pruebas automatizadas.
+
+> **Aviso:** el perfil Red Team tiene vulnerabilidades intencionales. No despliegues esta aplicación en Internet, en una red del campus ni en un entorno con datos reales. Solo se prueba contra la instancia local propia y con cuentas ficticias. Las credenciales seed son públicas y desechables; no las sustituyas por cuentas personales.
 
 ## En dos minutos
 
@@ -48,13 +50,31 @@ Estos comandos se ejecutan **dentro de Debian 13 XFCE en la VM**, no en PowerShe
 ```bash
 git clone https://github.com/RainieryPeniaJrg/unapec-isw-mini-shop-security-lab.git
 cd unapec-isw-mini-shop-security-lab
+cp .env.example .env
 docker compose up --build -d
 docker compose ps
 docker compose port shop 8080
 curl -i http://127.0.0.1:5080/api/health
 ```
 
+La copia de `.env.example` activa explícitamente `LAB_MODE=redteam` y la clave JWT desechable. Sin esa configuración el modo vulnerable está desactivado; ese comportamiento base no equivale a implementar los controles de Fase 2. No subas `.env` al repositorio.
+
 El mapeo debe ser `127.0.0.1:5080`. Detente si `docker compose port shop 8080` muestra `0.0.0.0` u otra interfaz. No configures Bridge, port forwarding, reglas de router/firewall para exponer el puerto, ni escanees sistemas externos.
+
+Abre `http://127.0.0.1:5080/Products`. El login web está en `/Account/Login`; el login API es `POST /api/auth/login` con JSON `username` y `password`.
+
+| Cuenta sintética | Contraseña local | Recorrido |
+|---|---|---|
+| `cliente-a` | `LabClienteA2026!` | Catálogo, comentarios, carrito y pedidos |
+| `cliente-b` | `LabClienteB2026!` | Recursos propios para comparación BOLA |
+| `cliente-xss` | `LabXss2026!` | Víctima ficticia y perfil MVC |
+| `cliente-brute` | `LabPass2026!` | Intentos limitados del runbook de autenticación |
+| `vendedor-lab` | `LabSeller2026!` | CRUD propio en `/Seller/Products` |
+| `admin-lab` | `LabAdmin2026!` | Panel `/Admin` y CRUD de productos |
+
+El Cliente usa `/Cart` y `/Orders`. En una seed limpia, A tiene carrito/pedido `1`; B tiene carrito/pedido `2` e ítem de carrito `2`. Los precios se almacenan en centavos. Vendedor no compra y Admin consulta datos sintéticos sin modificar carritos/pedidos de clientes.
+
+Los cinco escenarios están aislados en Red Team: búsqueda SQLi con principal PostgreSQL de solo lectura, comentarios sin codificación contextual, BOLA en recursos de clientes, enumeración/intentos de login sin límite y JWT HS256 con clave débil. El bypass de `/api/admin` con cookie MVC es distinto de la elevación JWT: el JWT Cliente normal recibe 403; el token firmado como Admin permite la comparación del runbook.
 
 Para restablecer PostgreSQL y los datos sintéticos después de guardar evidencia:
 
@@ -64,6 +84,29 @@ docker compose up --build -d
 ```
 
 `down -v` elimina el volumen de PostgreSQL. Guarda primero las evidencias necesarias y no incluyas cookies, contraseñas, tokens ni datos personales en commits públicos.
+
+## Modelo y mantenimiento del código
+
+### Actualizar una copia existente
+
+`git clone` descarga el repositorio por primera vez; `git pull` actualiza una copia ya clonada. Dentro de la carpeta del repositorio, ejecuta:
+
+```bash
+git status
+git pull --ff-only origin main
+docker compose up --build -d
+docker compose ps
+```
+
+Si tienes cambios locales, consérvalos en un commit o mediante `git stash push -u` antes del pull; después puedes recuperarlos con `git stash apply` y revisar posibles conflictos. Si Git indica que las ramas divergieron, no fuerces la actualización: revisa `git log --oneline --graph --all` con el equipo.
+
+Conserva tu `.env` y el volumen de PostgreSQL al actualizar. Copia `.env.example` únicamente cuando aún no exista `.env`; una actualización normal no requiere `docker compose down -v`. El arranque aplica las migraciones y valida el esquema anterior antes de adoptarlo.
+
+### Estructura Code First
+
+Las entidades se definen en C# y su configuración relacional vive en clases Fluent API por entidad. Las migraciones de EF Core versionan el esquema; el inicializador de base de datos y la seed de laboratorio tienen responsabilidades separadas. Los controladores dependen de interfaces específicas para autenticación, catálogo, comentarios, carrito, pedidos y administración.
+
+El refactor conserva las rutas, los DTO, el esquema de negocio y los escenarios vulnerables de Fase 1. La guía [Code First y migraciones](docs/code-first.md) explica cómo crear migraciones y adoptar una base previa creada con `EnsureCreated` sin borrar sus datos.
 
 ## Runbooks de ataques
 
@@ -89,8 +132,8 @@ Sigue primero el [procedimiento común de pentest](docs/fase1/procedimiento-pent
 │   ├── plan-maestro.md
 │   └── plan-trabajo.md
 ├── src/MiniShop.Api/        # ASP.NET Core
-├── tests/                   # pruebas automatizadas
-├── threat-model/            # DFD y STRIDE iniciales
+├── tests/                   # pruebas automatizadas y configuración PostgreSQL
+├── threat-model/            # DFD y STRIDE del alcance Fase 1
 ├── compose.yaml             # app + PostgreSQL, bind loopback
 └── Dockerfile               # build multi-stage .NET
 ```
@@ -100,7 +143,7 @@ Sigue primero el [procedimiento común de pentest](docs/fase1/procedimiento-pent
 - Usa ramas pequeñas y Pull Requests; revisa los cambios de otra persona antes de integrar.
 - No subas `.env`, claves, certificados, exportaciones de Burp/ZAP sin sanear, videos sin revisar ni archivos de VM.
 - Mantén README, runbooks, DFD, STRIDE y matriz sincronizados con las rutas y el commit real.
-- Antes de entregar, ejecuta `dotnet test` desde un host de desarrollo con .NET SDK 10 o desde el entorno validado; repite el laboratorio desde la VM Debian limpia.
+- Antes de entregar, ejecuta `dotnet test tests/MiniShop.Api.Tests/MiniShop.Api.Tests.csproj` desde un host con .NET SDK 10 y PostgreSQL de pruebas configurado según [tests/README.md](tests/README.md); repite el laboratorio desde la VM Debian limpia.
 - No declares implementados los flujos o ataques que sigan marcados como pendientes.
 
 Las reglas de contribución y seguridad están en [CONTRIBUTING.md](CONTRIBUTING.md) y [SECURITY.md](SECURITY.md). No se asigna una licencia de reutilización a este repositorio por ahora.

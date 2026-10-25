@@ -2,7 +2,7 @@
 
 > **Entorno multi-OS del hito:** el código puede desarrollarse en Windows o Linux; el contenedor de referencia es Linux y Docker Compose, el objetivo y las herramientas de pentest se ejecutan dentro de Debian 13 XFCE en la VM del laboratorio. Los comandos de los runbooks se ejecutan desde esa VM y el objetivo es exclusivamente `http://127.0.0.1:5080` dentro del invitado.
 
-**Meta:** dejar especificado lo que el equipo debe desarrollar y demostrar para completar el segundo parcial. Este paquete guía la construcción futura; no significa que la mini-app o los PoC ya estén implementados.
+**Meta:** desarrollar y demostrar la aplicación del segundo parcial. Este paquete contiene el contrato de la mini-app y los procedimientos para verificarla. La implementación de la aplicación no acredita por sí sola los entregables manuales de Burp/ZAP, CVSS y video.
 
 ## Qué se debe entregar
 
@@ -29,16 +29,17 @@ La matriz completa de entregables y aceptación está en [`../matriz-entregables
 
 ## Levantar y reiniciar el laboratorio
 
-Ejecutar estos comandos dentro de la VM Debian 13 XFCE, con Docker Engine instalado allí. El repositorio, Docker Compose, contenedor objetivo, Burp y los runbooks quedan en la misma VM; el anfitrión Windows no publica el target ni necesita Docker Desktop para el pentest. Cuando se implemente la mini-app, el README de desarrollo debe ofrecer estos comandos equivalentes:
+Ejecutar estos comandos dentro de la VM Debian 13 XFCE, con Docker Engine instalado allí. El repositorio, Docker Compose, contenedor objetivo, Burp y los runbooks quedan en la misma VM; el anfitrión Windows no publica el target ni necesita Docker Desktop para el pentest:
 
 ```bash
+cp .env.example .env
 docker compose up --build -d
 docker compose ps
 docker compose port shop 8080
 curl -i http://127.0.0.1:5080/api/health
 ```
 
-`docker compose port shop 8080` debe mostrar `127.0.0.1:5080`. Si muestra otra interfaz o el health check no responde, no iniciar herramientas de pentest. Para resetear datos, tokens y claves efímeras:
+`.env.example` configura explícitamente `LAB_MODE=redteam`; sin esa activación no se habilitan los defectos del laboratorio. `docker compose port shop 8080` debe mostrar `127.0.0.1:5080`. Si muestra otra interfaz o el health check no responde, no iniciar herramientas de pentest. Para resetear datos y claves de sesión efímeras:
 
 ```bash
 docker compose down -v

@@ -9,13 +9,12 @@ public sealed class ShopDbContext(DbContextOptions<ShopDbContext> options) : DbC
     public DbSet<Product> Products => Set<Product>();
     public DbSet<CartItem> CartItems => Set<CartItem>();
     public DbSet<ProductComment> Comments => Set<ProductComment>();
+    public DbSet<Cart> Carts => Set<Cart>();
+    public DbSet<Order> Orders => Set<Order>();
+    public DbSet<OrderItem> OrderItems => Set<OrderItem>();
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
-        modelBuilder.Entity<User>().HasIndex(x => x.Username).IsUnique();
-        modelBuilder.Entity<User>().Property(x => x.Role).HasMaxLength(20);
-        modelBuilder.Entity<Product>().Property(x => x.Name).HasMaxLength(120);
-        modelBuilder.Entity<Product>().Property(x => x.PriceCents).IsRequired();
-        modelBuilder.Entity<CartItem>().HasIndex(x => new { x.UserId, x.ProductId }).IsUnique();
+        modelBuilder.ApplyConfigurationsFromAssembly(typeof(ShopDbContext).Assembly);
     }
 }

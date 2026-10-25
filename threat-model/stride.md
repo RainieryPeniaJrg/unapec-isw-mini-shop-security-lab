@@ -2,7 +2,7 @@
 
 > **Entorno multi-OS del hito:** el código puede desarrollarse en Windows o Linux; el contenedor de referencia es Linux y Docker Compose, el objetivo y las herramientas de pentest se ejecutan dentro de Debian 13 XFCE en la VM del laboratorio. Los comandos de los runbooks se ejecutan desde esa VM y el objetivo es exclusivamente `http://127.0.0.1:5080` dentro del invitado.
 
-**Estado:** análisis inicial basado en la arquitectura y rutas propuestas. Al cerrar el contrato de API y construir la app, verificar cada amenaza contra el DFD real, actualizar nombres de endpoints y dejar constancia de amenazas no aplicables.
+**Estado:** registro del alcance Fase 1 y sus superficies intencionalmente vulnerables. Las filas describen escenarios y evidencia requerida; no equivalen a hallazgos con evidencia manual ya capturada. Los controles de Fase 2 siguen pendientes.
 
 | ID | Categoría | Actor/condición | Activo y superficie | Escenario/impacto a evaluar | Evidencia de Fase 1 | Control esperado para Fase 2 |
 |---|---|---|---|---|---|---|

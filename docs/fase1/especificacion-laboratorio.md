@@ -72,7 +72,7 @@ No mantener dos contratos distintos en UI y API. El login MVC usa cookie; el log
 - `GET /api/products/search?q=` concatena/interpola `q` en una consulta PostgreSQL de lectura y permite una señal time-based verificable con `pg_sleep`; el endpoint/rol de búsqueda no debe poder modificar filas. Para aislarlo, usar un principal `minishop_search` con `SELECT` de catálogo y acceso de lectura a metadatos necesarios.
 - En la vista de comentarios, solo bajo `LAB_MODE=redteam`, omitir codificación contextual para que el XSS persistente se ejecute. Otras vistas permanecen normales.
 - El comentario lo publica `cliente-a` o `vendedor-lab`; la víctima `cliente-xss` lo abre con una cookie MVC `LabSession` que no tiene `HttpOnly`. La carga envía la cookie a `/lab/collect`, que responde 204 sin persistirla. El replay a `/Account/Profile` muestra `cliente-xss`.
-- IDOR/BOLA permite que Cliente A lea y cambie cantidad del carrito/pedido de Cliente B por ID; el mismo Cliente puede llamar `/api/admin` y debe obtener el resultado indebido planificado.
+- IDOR/BOLA permite que Cliente A lea y cambie cantidad del carrito/pedido de Cliente B por ID; el mismo Cliente puede llamar `/api/admin` con cookie MVC y obtener el resultado indebido planificado. Un Bearer JWT de Cliente conserva el rechazo 403 en esa ruta, para contrastarlo con la elevación JWT del escenario separado.
 - Login diferencia cuenta inexistente de password incorrecta y no tiene rate limit solo en modo Red. La cuenta `cliente-brute` usa la contraseña seed de la tabla de cuentas.
 - El JWT de `cliente-a` se firma con HS256 y el secreto de laboratorio `MiniShopLab2026`; cambiar el claim de rol a Admin permite acceder a `/api/admin` en Red.
 

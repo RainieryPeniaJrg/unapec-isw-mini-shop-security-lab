@@ -1,0 +1,3 @@
+@model AdminResponse
+@{ ViewData["Title"] = "Administración"; }
+<div class="eyebrow">PANEL ADMIN</div><h1>Administración del laboratorio</h1><p>Solo identidades, productos y pedidos sintéticos.</p><a href="/Seller/Products" class="btn btn-dark mb-4">Administrar productos</a><h2>Usuarios</h2><table class="table"><thead><tr><th>ID</th><th>Usuario</th><th>Rol</th></tr></thead><tbody>@foreach (var user in Model.Users) { <tr><td>@user.Id</td><td>@user.Username</td><td>@user.Role</td></tr> }</tbody></table><h2>Pedidos</h2><table class="table"><thead><tr><th>ID</th><th>Cliente</th><th>Total</th></tr></thead><tbody>@foreach (var order in Model.Orders) { <tr><td>#@order.Id</td><td>#@order.UserId</td><td>RD$ @((order.TotalCents / 100m).ToString("N2"))</td></tr> }</tbody></table>

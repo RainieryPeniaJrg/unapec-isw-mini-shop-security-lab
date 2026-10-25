@@ -19,7 +19,7 @@ Con un usuario Cliente sintético, alterar únicamente un JWT emitido por la pro
 
 ## Procedimiento — secreto débil (opción recomendada)
 
-1. En Burp, iniciar sesión por `POST /api/auth/login` como `cliente-a` y guardar el JWT solo temporalmente. Guardar la respuesta normal de `GET /api/admin` (debe ser 401/403).
+1. En Burp, iniciar sesión por `POST /api/auth/login` como `cliente-a` y guardar el JWT solo temporalmente. Guardar la respuesta normal de `GET /api/admin` (debe ser 403 con un JWT Cliente válido). Enviar únicamente `Authorization: Bearer <token>`; retirar la cookie MVC de esta prueba para aislarla del bypass con sesión del runbook F1-12.
 2. Decodificar header/payload localmente para identificar algoritmo y nombre del claim de rol. No cambiar firma todavía; confirmar que el token normal no da acceso a `/api/admin`.
 3. Con PyJWT local, mantener los claims del token emitido y cambiar únicamente el claim de rol a Admin. El siguiente script solicita token y secreto de forma interactiva para no dejarlos en el historial del shell. Ajustar `role` solo si el JWT de la app usa otro nombre de claim:
 

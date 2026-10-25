@@ -2,7 +2,7 @@
 
 > **Entorno multi-OS del hito:** el código puede desarrollarse en Windows o Linux; el contenedor de referencia es Linux y Docker Compose, el objetivo y las herramientas de pentest se ejecutan dentro de Debian 13 XFCE en la VM del laboratorio. Los comandos de los runbooks se ejecutan desde esa VM y el objetivo es exclusivamente `http://127.0.0.1:5080` dentro del invitado.
 
-**Estado:** diseño inicial de la solución planificada. Ajustar y versionar después de aprobar rutas/componentes y nuevamente después de construir el MVP. No presentar el diagrama como verificado hasta contrastarlo con la app real.
+**Estado:** modelo del alcance implementado para Fase 1; los resultados de ejecución se registran por separado. Redis, Vault y refresh tokens pertenecen a la Fase 2 y no forman parte de este diagrama.
 
 ```mermaid
 flowchart LR
@@ -10,6 +10,7 @@ flowchart LR
   W -->|"HTML/JSON, cookie de sesión"| U
   P["Burp/ZAP y herramientas de prueba"] -->|"HTTP local dentro del scope"| W
   W -->|"EF Core/Npgsql"| D[("PostgreSQL con datos sintéticos")]
+  W -->|"SQL de búsqueda Red Team, rol minishop_search de solo lectura"| D
   W -->|"Logs de aplicación"| L["Salida de contenedor"]
   U -->|"Cookie de sesión robada: GET /lab/collect"| W
   B1["Límite: navegador y app"] -.-> W
@@ -29,6 +30,6 @@ flowchart LR
 
 **Activos:** credenciales sintéticas, identidad/roles, catálogo/precios, comentarios, carrito/pedidos, cookie de sesión del usuario ficticio, JWT de laboratorio, disponibilidad e integridad de registros.
 
-**Puntos de entrada:** `/Account/Login`, `/Products/*`, `/Cart/*`, `/Seller/*`, `/Admin/*`; API `/api/auth/login`, `/api/products/search`, `/api/products/{id}/comments`, `/api/cart/{cartId}`, `/api/orders/{orderId}`, `/api/admin` y `/lab/collect`. El scaffold actual solo expone salud y consulta de productos; contrastar este diseño con las rutas efectivamente implementadas antes de la entrega.
+**Puntos de entrada:** `/Account/Login`, `/Account/Profile`, `/Products/*`, `/Cart/*`, `/Seller/*`, `/Admin/*`; API `/api/auth/login`, `/api/products/search`, `/api/products/{id}/comments`, `/api/cart/{cartId}`, `/api/orders/{orderId}`, `/api/admin` y `/lab/collect`. MVC usa la cookie `LabSession`; la API admite los esquemas de autenticación previstos por cada operación.
 
-**Flujos a verificar:** login devuelve credencial de sesión/token; búsqueda consulta PostgreSQL; comentario se persiste y vuelve a la vista; operaciones de carrito/pedido leen/escriben recursos por ID; llamada administrativa evalúa el rol; herramientas de prueba observan requests/responses locales.
+**Flujos:** login devuelve credencial de sesión/token; búsqueda consulta PostgreSQL; comentario se persiste y vuelve a la vista; operaciones de carrito/pedido leen/escriben recursos por ID; herramientas de prueba observan requests/responses locales. En Red Team, `/api/admin` permite el bypass con cookie MVC de Cliente; con JWT exige Admin, cuya firma HS256 débil se demuestra en un escenario separado. `/lab/collect` responde 204 sin persistir la cookie recibida.

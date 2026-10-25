@@ -1,0 +1,7 @@
+@model CartResponse
+@{ ViewData["Title"] = "Carrito"; }
+<div class="eyebrow">CARRITO #@Model.Id</div><h1>Tu carrito</h1><p>Revisa cantidades antes de confirmar el pedido sintético.</p>
+@if (Model.Items.Count == 0) { <p>Tu carrito está vacío. <a href="/Products">Explora el catálogo</a>.</p> }
+else { <div class="table-responsive"><table class="table"><thead><tr><th>Producto</th><th>Precio</th><th>Cantidad</th><th>Acciones</th></tr></thead><tbody>
+@foreach (var item in Model.Items) { <tr><td>@item.Name</td><td>RD$ @((item.PriceCents / 100m).ToString("N2"))</td><td><form asp-action="Update" method="post" class="inline-form"><input type="hidden" name="cartId" value="@Model.Id" /><input type="hidden" name="itemId" value="@item.Id" /><label class="visually-hidden" for="qty-@item.Id">Cantidad de @item.Name</label><input id="qty-@item.Id" name="quantity" type="number" min="1" max="99" value="@item.Quantity" class="form-control quantity" /><button class="btn btn-outline-dark">Actualizar</button></form></td><td><form asp-action="Remove" method="post"><input type="hidden" name="cartId" value="@Model.Id" /><input type="hidden" name="itemId" value="@item.Id" /><button class="btn btn-outline-danger">Retirar</button></form></td></tr> }
+</tbody></table></div><p class="price">Total: RD$ @((Model.TotalCents / 100m).ToString("N2"))</p><form asp-action="Checkout" method="post"><input type="hidden" name="cartId" value="@Model.Id" /><button class="btn btn-dark">Confirmar pedido sintético</button></form> }

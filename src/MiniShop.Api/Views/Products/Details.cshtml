@@ -1,0 +1,10 @@
+@model ProductResponse
+@inject LabOptions Lab
+@{ ViewData["Title"] = Model.Name; var comments = (List<CommentResponse>)ViewBag.Comments; }
+<a href="/Products">← Catálogo</a><div class="detail mt-4"><div class="product-art large" aria-hidden="true">▧</div><section><div class="eyebrow">PRODUCTO #@Model.Id</div><h1>@Model.Name</h1><p class="lead">@Model.Description</p><p class="price">RD$ @((Model.PriceCents / 100m).ToString("N2"))</p>
+@if (User.IsInRole("Cliente")) { <form asp-controller="Cart" asp-action="Add" method="post"><input type="hidden" name="productId" value="@Model.Id" /><label for="quantity">Cantidad</label><input id="quantity" name="quantity" type="number" value="1" min="1" max="99" class="form-control quantity" /><button class="btn btn-dark mt-3">Agregar al carrito</button></form> }
+else if (User.Identity?.IsAuthenticated != true) { <a href="/Account/Login">Inicia sesión para comprar</a> }</section></div>
+<section class="comments"><h2>Comentarios <span class="text-muted">(@comments.Count)</span></h2>
+@foreach (var comment in comments) { <article class="comment"><strong>@comment.Username</strong><div>@if (Lab.RedTeam) { @Html.Raw(comment.Body) } else { @comment.Body }</div></article> }
+@if (User.Identity?.IsAuthenticated == true) { <form asp-action="Comment" method="post"><input type="hidden" name="id" value="@Model.Id" /><label for="body">Comparte un comentario</label><textarea id="body" name="body" required maxlength="4000" class="form-control" rows="3"></textarea><button class="btn btn-dark mt-3">Publicar comentario</button></form> }
+else { <p><a href="/Account/Login">Inicia sesión</a> para comentar.</p> }</section>

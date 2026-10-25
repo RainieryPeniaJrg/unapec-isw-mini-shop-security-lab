@@ -2,7 +2,7 @@
 
 > **Entorno multi-OS del hito:** el código puede desarrollarse en Windows o Linux; el contenedor de referencia es Linux y Docker Compose, el objetivo y las herramientas de pentest se ejecutan dentro de Debian 13 XFCE en la VM del laboratorio. Los comandos de los runbooks se ejecutan desde esa VM y el objetivo es exclusivamente `http://127.0.0.1:5080` dentro del invitado.
 
-Esta es una propuesta de planificación, no una asignación de tareas en curso. La especificación completa para revisar antes de implementar está en [`especificacion-proyecto.md`](especificacion-proyecto.md). La comprobación requisito por requisito está en [`matriz-entregables.md`](matriz-entregables.md).
+El desarrollo de la aplicación está autorizado hasta Fase 1. El reparto A/B/C sigue siendo una propuesta para el equipo académico. La especificación está en [`especificacion-proyecto.md`](especificacion-proyecto.md) y la comprobación requisito por requisito en [`matriz-entregables.md`](matriz-entregables.md). Las evidencias manuales y la revisión del hito se completan por separado.
 
 ## Prioridad de esta primera etapa
 

@@ -1,0 +1,11 @@
+@inject LabOptions Lab
+<!DOCTYPE html>
+<html lang="es"><head><meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" /><title>@ViewData["Title"] · Mini Shop</title><link rel="stylesheet" href="~/lib/bootstrap/bootstrap.min.css" /><link rel="stylesheet" href="~/css/site.css" /></head>
+<body><header><nav class="container navbar"><a class="brand" href="/Products">Mini Shop<span>UNAPEC · laboratorio local</span></a><div class="nav-links"><a href="/Products">Catálogo</a>
+@if (User.IsInRole("Cliente")) { <a href="/Cart">Carrito</a><a href="/Orders">Mis pedidos</a> }
+@if (User.IsInRole("Vendedor") || User.IsInRole("Admin")) { <a href="/Seller/Products">Productos</a> }
+@if (User.IsInRole("Admin")) { <a href="/Admin">Administración</a> }
+@if (User.Identity?.IsAuthenticated == true) { <a href="/Account/Profile">@User.Identity.Name</a><form asp-controller="Account" asp-action="Logout" method="post"><button class="btn btn-outline-dark" type="submit">Salir</button></form> }
+else { <a class="btn btn-dark" href="/Account/Login">Iniciar sesión</a> }
+</div></nav></header><div class="lab-banner">@(Lab.RedTeam ? "RED TEAM · Fallas intencionales activas · Solo datos ficticios y loopback" : "Laboratorio local · Escenarios Red Team desactivados")</div>
+<main class="container py-5">@RenderBody()</main><footer class="container">Mini Shop Security Lab · Fase 1 · Sin pagos ni datos reales</footer></body></html>

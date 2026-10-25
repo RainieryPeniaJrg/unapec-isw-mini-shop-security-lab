@@ -5,7 +5,7 @@
 > **Prioridad actual:** diseñar y construir lo necesario para la Fase 1 / segundo parcial (40%). Esto incluye la mini-app funcional completa y el laboratorio local con los cinco escenarios de ataque, threat model, CVSS, evidencia y video. Los controles de remediación y entregables Blue Team de Fase 2 se especifican para continuidad, pero no son parte de la implementación inicial.
 
 **Curso:** UNAPEC — Seguridad de Software (ISW), Proyecto Integrador Avanzado
-**Estado:** propuesta para revisar antes de implementar
+**Estado:** especificación de referencia; desarrollo autorizado hasta Fase 1. Los requisitos de Fase 2 se conservan como trabajo futuro.
 **Stack acordado por el equipo:** .NET. Las decisiones de frontend y arquitectura que siguen son recomendaciones para aprobación.
 
 El plan consolidado con decisiones de herramientas está en [plan-maestro.md](plan-maestro.md). Para comprobar que cada punto de la consigna tiene salida y evidencia, consultar la [matriz de entregables](matriz-entregables.md); la secuencia y reparto propuesto están en [plan-trabajo.md](plan-trabajo.md).
@@ -212,4 +212,4 @@ Las decisiones de stack, frontend, permisos, cuentas, rutas, herramientas y ataq
 
 ## 11. Estado del repositorio en esta etapa
 
-El directorio actual contiene un scaffold de API .NET y PostgreSQL, más documentos iniciales. No contiene todavía las vistas MVC/Razor ni implementa los flujos funcionales o vulnerabilidades. Esta especificación es la base para revisar alcance y arquitectura antes de convertir requisitos en código o asignar personas.
+El repositorio desarrolla la mini-app MVC/Razor y API sobre PostgreSQL para Fase 1, con los escenarios vulnerables activados exclusivamente mediante el perfil Red Team. El README documenta arranque, cuentas sintéticas, reset y verificación. La existencia del código y las pruebas automatizadas no acredita la entrega académica completa: siguen siendo necesarios la evidencia Burp/ZAP, el informe CVSS, el video y la revisión del commit/tag probado.

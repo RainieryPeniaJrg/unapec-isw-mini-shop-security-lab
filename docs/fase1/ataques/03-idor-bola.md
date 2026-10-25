@@ -12,6 +12,8 @@ Demostrar con dos clientes sintéticos que la app confía en un identificador su
 - Carrito/pedido de B con datos sintéticos y su ID; conservar el ID de A como control.
 - Iniciar sesión como A y capturar la cookie/token de laboratorio en Burp. Mantener B desconectado.
 
+En una seed limpia, A tiene usuario/carrito/pedido `1`; B tiene usuario/carrito/pedido `2`, y su ítem de carrito es `2`. El reset restaura estos identificadores y cantidades.
+
 ## Procedimiento
 
 1. Como A, consultar el propio carrito/pedido y guardar la respuesta de referencia.
@@ -39,7 +41,7 @@ Demostrar con dos clientes sintéticos que la app confía en un identificador su
 
    Comparar el estado antes/después consultando como B o inspeccionando la seed local; restaurar la seed después.
 
-5. Con la misma identidad A, llamar `GET /api/admin` y registrar respuesta/código y contenido visible.
+5. Para el bypass administrativo, iniciar sesión MVC como la misma identidad A (`POST /Account/Login`) y llamar `GET /api/admin` con su cookie `LabSession`, sin cabecera Bearer. Registrar respuesta/código y contenido visible. El bypass Red Team de esta ruta usa la sesión MVC; un JWT Cliente normal recibe 403, lo que permite comparar después la elevación por JWT del [runbook F1-14](05-jwt.md).
 6. Repetir desde estado limpio. No borrar cuentas ni modificar recursos fuera de los datos de prueba.
 
 ## Evidencia y aceptación

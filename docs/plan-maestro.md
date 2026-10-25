@@ -3,7 +3,7 @@
 > **Entorno multi-OS del hito:** el código puede desarrollarse en Windows o Linux; el contenedor de referencia es Linux y Docker Compose, el objetivo y las herramientas de pentest se ejecutan dentro de Debian 13 XFCE en la VM del laboratorio. Los comandos de los runbooks se ejecutan desde esa VM y el objetivo es exclusivamente `http://127.0.0.1:5080` dentro del invitado.
 
 **Título:** Ciclo Completo de Red Team + Blue Team en una Aplicación Real
-**Estado:** planificación y especificaciones; aún no es autorización para ejecutar el desarrollo.
+**Estado:** desarrollo de la aplicación autorizado hasta Fase 1. La Fase 2 permanece fuera del alcance actual. El cierre académico requiere además evidencia manual, informe CVSS y video.
 **Base:** consigna completa compartida por el estudiante.
 **Equipo previsto:** 3 integrantes.
 **Stack principal elegido:** .NET.

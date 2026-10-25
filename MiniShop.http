@@ -1,0 +1,109 @@
+@baseUrl = http://127.0.0.1:5080
+@token = replace-with-disposable-login-token
+
+### Health and API description
+GET {{baseUrl}}/api/health
+
+###
+GET {{baseUrl}}/openapi/v1.json
+
+### Login: use only fictional seed accounts
+POST {{baseUrl}}/api/auth/login
+Content-Type: application/json
+
+{"username":"cliente-a","password":"LabClienteA2026!"}
+
+### Catalog
+GET {{baseUrl}}/api/products
+
+### Search (ordinary baseline)
+GET {{baseUrl}}/api/products/search?q=demo
+
+### Product detail
+GET {{baseUrl}}/api/products/1
+
+### Missing product
+GET {{baseUrl}}/api/products/999999
+
+### Create product: use seller/admin bearer
+POST {{baseUrl}}/api/products
+Authorization: Bearer {{token}}
+Content-Type: application/json
+
+{"name":"Producto sintético","description":"Solo laboratorio","priceCents":12500}
+
+### Update product: replace ID with newly created product
+PUT {{baseUrl}}/api/products/4
+Authorization: Bearer {{token}}
+Content-Type: application/json
+
+{"name":"Producto actualizado","description":"Solo laboratorio","priceCents":15000}
+
+### Delete newly created product
+DELETE {{baseUrl}}/api/products/4
+Authorization: Bearer {{token}}
+
+### Read comments
+GET {{baseUrl}}/api/products/1/comments
+
+### Persist ordinary comment
+POST {{baseUrl}}/api/products/1/comments
+Authorization: Bearer {{token}}
+Content-Type: application/json
+
+{"body":"Comentario ficticio para la práctica."}
+
+### Own cart: use client bearer
+GET {{baseUrl}}/api/cart/me
+Authorization: Bearer {{token}}
+
+### Seed cart A
+GET {{baseUrl}}/api/cart/1
+Authorization: Bearer {{token}}
+
+### Add line
+POST {{baseUrl}}/api/cart/1/items
+Authorization: Bearer {{token}}
+Content-Type: application/json
+
+{"productId":3,"quantity":1}
+
+### Update seed line A
+PUT {{baseUrl}}/api/cart/1/items/1
+Authorization: Bearer {{token}}
+Content-Type: application/json
+
+{"quantity":2}
+
+### Remove seed line A
+DELETE {{baseUrl}}/api/cart/1/items/1
+Authorization: Bearer {{token}}
+
+### Checkout
+POST {{baseUrl}}/api/orders
+Authorization: Bearer {{token}}
+Content-Type: application/json
+
+{"cartId":1}
+
+### Own orders
+GET {{baseUrl}}/api/orders/me
+Authorization: Bearer {{token}}
+
+### Seed order A
+GET {{baseUrl}}/api/orders/1
+Authorization: Bearer {{token}}
+
+### Quantity update of seed order
+PUT {{baseUrl}}/api/orders/1
+Authorization: Bearer {{token}}
+Content-Type: application/json
+
+{"quantity":2}
+
+### Admin: normal client JWT is forbidden; admin JWT succeeds
+GET {{baseUrl}}/api/admin
+Authorization: Bearer {{token}}
+
+### Local collector: 204 only with explicit Red Team configuration
+GET {{baseUrl}}/lab/collect

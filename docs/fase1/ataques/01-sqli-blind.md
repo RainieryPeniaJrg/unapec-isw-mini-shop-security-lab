@@ -9,7 +9,7 @@ Demostrar que el parámetro de búsqueda de productos permite inferir informaci�
 ## Requisitos previos
 
 - Mini-app y PostgreSQL de laboratorio arriba en `127.0.0.1:<puerto>`.
-- Ruta de búsqueda fijada en el contrato (candidata: `GET /api/products/search?q=`).
+- Ruta de búsqueda: `GET /api/products/search?q=`.
 - Base reiniciada y con seed ficticia; registrar el commit.
 - Burp configurado para scope local; sqlmap instalado.
 
@@ -29,7 +29,7 @@ Comando acordado para el contrato fijado (si el puerto local se cambia en Compos
 sqlmap -u "http://127.0.0.1:5080/api/products/search?q=demo" -p q --dbms=PostgreSQL --technique=T --time-sec=2 --current-db --tables --batch --threads=1 --timeout=10 --retries=1 --output-dir=artifacts/sqlmap
 ```
 
-Este endpoint será de lectura de catálogo y no debe requerir sesión. Antes de ejecutar, copiar y revisar el comando: el host tiene que ser `127.0.0.1`, el parámetro debe ser `q`, el motor PostgreSQL y la técnica `T`. No ejecutar si el host no empieza exactamente por `http://127.0.0.1:`. `--current-db` y `--tables` enumera metadatos; no añadir `--dump`, `--os-shell`, `--file-read` ni otras opciones.
+Este endpoint es de lectura de catálogo y no requiere sesión. Antes de ejecutar, copiar y revisar el comando: el host tiene que ser `127.0.0.1`, el parámetro debe ser `q`, el motor PostgreSQL y la técnica `T`. No ejecutar si el host no empieza exactamente por `http://127.0.0.1:`. `--current-db` y `--tables` enumera metadatos; no añadir `--dump`, `--os-shell`, `--file-read` ni otras opciones.
 
 ## Evidencia y aceptación
 

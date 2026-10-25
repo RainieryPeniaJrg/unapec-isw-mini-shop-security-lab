@@ -1,0 +1,17 @@
+.git
+.env
+.env.*
+**/bin
+**/obj
+**/TestResults
+artifacts
+reports
+docs/fase1/evidencias/raw
+docs/fase1/evidencias/private
+**/*.burp
+**/*.har
+**/*.mp4
+**/*.pem
+**/*.key
+.venv*
+.codex

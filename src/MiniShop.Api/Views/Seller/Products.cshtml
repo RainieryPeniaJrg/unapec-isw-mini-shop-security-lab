@@ -1,0 +1,4 @@
+@model List<ProductResponse>
+@{ ViewData["Title"] = "Gestionar productos"; }
+<div class="eyebrow">PANEL DE PRODUCTOS</div><h1>@(User.IsInRole("Admin") ? "Todos los productos" : "Mis productos")</h1><a href="/Seller/Edit" class="btn btn-dark mb-4">Crear producto</a><div class="table-responsive"><table class="table"><thead><tr><th>Producto</th><th>Precio</th><th>Vendedor</th><th>Acciones</th></tr></thead><tbody>
+@foreach (var product in Model) { <tr><td>@product.Name</td><td>RD$ @((product.PriceCents / 100m).ToString("N2"))</td><td>#@product.SellerId</td><td class="inline-form"><a href="/Seller/Edit/@product.Id" class="btn btn-outline-dark">Editar</a><form asp-action="Delete" method="post"><input type="hidden" name="id" value="@product.Id" /><button class="btn btn-outline-danger">Eliminar</button></form></td></tr> }</tbody></table></div>

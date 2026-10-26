@@ -1,3 +1,23 @@
 @model OrderResponse
 @{ ViewData["Title"] = "Pedido " + Model.Id; }
-<div class="eyebrow">PEDIDO SINTÉTICO</div><h1>Pedido #@Model.Id</h1><p>Cliente #@Model.UserId · @Model.CreatedAt.ToString("yyyy-MM-dd HH:mm") UTC</p><table class="table"><thead><tr><th>Producto</th><th>Cantidad</th><th>Precio congelado</th></tr></thead><tbody>@foreach (var line in Model.Items) { <tr><td>@line.Name</td><td>@line.Quantity</td><td>RD$ @((line.PriceCents / 100m).ToString("N2"))</td></tr> }</tbody></table><p class="price">Total: RD$ @((Model.TotalCents / 100m).ToString("N2"))</p><a href="/Orders">Ver mis pedidos</a>
+<a href="/Orders" class="back-link"><i class="fas fa-arrow-left"></i> Mis pedidos</a>
+<div class="eyebrow"><i class="fas fa-file-invoice"></i> PEDIDO SINTÉTICO</div>
+<h1>Pedido #@Model.Id</h1>
+<p class="text-muted"><i class="fas fa-user"></i> Cliente #@Model.UserId · <i class="fas fa-calendar"></i> @Model.CreatedAt.ToString("dd MMM yyyy · HH:mm") UTC</p>
+<div class="table-responsive mt-4">
+    <table class="table">
+        <thead><tr><th><i class="fas fa-box"></i> Producto</th><th><i class="fas fa-hashtag"></i> Cantidad</th><th><i class="fas fa-tag"></i> Precio congelado</th></tr></thead>
+        <tbody>
+            @foreach (var line in Model.Items) {
+                <tr><td><strong>@line.Name</strong></td><td>@line.Quantity</td><td>RD$ @((line.PriceCents / 100m).ToString("N2"))</td></tr>
+            }
+        </tbody>
+    </table>
+</div>
+<div class="total-card">
+    <div>
+        <div class="total-label">Total del pedido</div>
+        <div class="price">RD$ @((Model.TotalCents / 100m).ToString("N2"))</div>
+    </div>
+    <a href="/Orders" class="btn btn-gold"><i class="fas fa-list"></i> Ver mis pedidos</a>
+</div>

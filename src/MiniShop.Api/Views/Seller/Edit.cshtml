@@ -1,3 +1,19 @@
 @model ProductResponse
 @{ ViewData["Title"] = Model.Id == 0 ? "Crear producto" : "Editar producto"; }
-<h1>@ViewData["Title"]</h1><div asp-validation-summary="All" class="text-danger"></div><form asp-action="Save" method="post" class="editor"><input type="hidden" name="id" value="@Model.Id" /><label for="name">Nombre</label><input id="name" name="name" value="@Model.Name" maxlength="120" required class="form-control" /><label for="description">Descripción</label><textarea id="description" name="description" maxlength="2000" class="form-control" rows="4">@Model.Description</textarea><label for="price">Precio en centavos (RD$)</label><input id="price" name="priceCents" type="number" min="1" max="100000000" value="@Model.PriceCents" required class="form-control" /><button class="btn btn-dark mt-4">Guardar producto</button><a href="/Seller/Products" class="btn btn-outline-dark mt-4">Cancelar</a></form>
+<a href="/Seller/Products" class="back-link"><i class="fas fa-arrow-left"></i> Volver a productos</a>
+<div class="eyebrow"><i class="fas @(Model.Id == 0 ? "fa-plus-circle" : "fa-pen-to-square")"></i> @(Model.Id == 0 ? "NUEVO PRODUCTO" : "EDITAR PRODUCTO")</div>
+<h1>@ViewData["Title"]</h1>
+<div asp-validation-summary="All" class="text-danger"></div>
+<form asp-action="Save" method="post" class="editor">
+    <input type="hidden" name="id" value="@Model.Id" />
+    <label for="name"><i class="fas fa-tag"></i> Nombre</label>
+    <input id="name" name="name" value="@Model.Name" maxlength="120" required class="form-control" placeholder="Nombre del producto" />
+    <label for="description"><i class="fas fa-align-left"></i> Descripción</label>
+    <textarea id="description" name="description" maxlength="2000" class="form-control" rows="4" placeholder="Descripción del producto...">@Model.Description</textarea>
+    <label for="price"><i class="fas fa-coins"></i> Precio en centavos (RD$)</label>
+    <input id="price" name="priceCents" type="number" min="1" max="100000000" value="@Model.PriceCents" required class="form-control" />
+    <div class="inline-form mt-4">
+        <button class="btn btn-dark"><i class="fas fa-save"></i> Guardar producto</button>
+        <a href="/Seller/Products" class="btn btn-outline-dark"><i class="fas fa-times"></i> Cancelar</a>
+    </div>
+</form>

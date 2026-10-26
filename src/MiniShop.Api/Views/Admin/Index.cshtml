@@ -1,3 +1,53 @@
 @model AdminResponse
 @{ ViewData["Title"] = "Administración"; }
-<div class="eyebrow">PANEL ADMIN</div><h1>Administración del laboratorio</h1><p>Solo identidades, productos y pedidos sintéticos.</p><a href="/Seller/Products" class="btn btn-dark mb-4">Administrar productos</a><h2>Usuarios</h2><table class="table"><thead><tr><th>ID</th><th>Usuario</th><th>Rol</th></tr></thead><tbody>@foreach (var user in Model.Users) { <tr><td>@user.Id</td><td>@user.Username</td><td>@user.Role</td></tr> }</tbody></table><h2>Pedidos</h2><table class="table"><thead><tr><th>ID</th><th>Cliente</th><th>Total</th></tr></thead><tbody>@foreach (var order in Model.Orders) { <tr><td>#@order.Id</td><td>#@order.UserId</td><td>RD$ @((order.TotalCents / 100m).ToString("N2"))</td></tr> }</tbody></table>
+<div class="eyebrow"><i class="fas fa-gauge-high"></i> PANEL ADMIN</div>
+<h1>Administración del laboratorio</h1>
+<p class="lead">Gestión de identidades, productos y pedidos sintéticos de la plataforma demo.</p>
+
+<div class="stat-grid">
+    <div class="stat-card">
+        <div class="stat-icon users"><i class="fas fa-users"></i></div>
+        <div class="stat-number">@Model.Users.Count</div>
+        <div class="stat-label">Usuarios</div>
+    </div>
+    <div class="stat-card">
+        <div class="stat-icon products"><i class="fas fa-boxes-stacked"></i></div>
+        <div class="stat-number">@Model.Products.Count</div>
+        <div class="stat-label">Productos</div>
+    </div>
+    <div class="stat-card">
+        <div class="stat-icon orders"><i class="fas fa-file-invoice-dollar"></i></div>
+        <div class="stat-number">@Model.Orders.Count</div>
+        <div class="stat-label">Pedidos</div>
+    </div>
+</div>
+
+<a href="/Seller/Products" class="btn btn-dark mb-4"><i class="fas fa-boxes-stacked"></i> Administrar productos</a>
+
+<h2><i class="fas fa-users"></i> Usuarios</h2>
+<div class="table-responsive">
+    <table class="table">
+        <thead><tr><th>ID</th><th>Usuario</th><th>Rol</th></tr></thead>
+        <tbody>
+            @foreach (var user in Model.Users) {
+                <tr>
+                    <td>@user.Id</td>
+                    <td><strong>@user.Username</strong></td>
+                    <td><span class="badge @(user.Role == "Admin" ? "badge-admin" : user.Role == "Vendedor" ? "badge-vendedor" : "badge-cliente")">@user.Role</span></td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+
+<h2><i class="fas fa-file-invoice-dollar"></i> Pedidos</h2>
+<div class="table-responsive">
+    <table class="table">
+        <thead><tr><th>ID</th><th>Cliente</th><th>Total</th></tr></thead>
+        <tbody>
+            @foreach (var order in Model.Orders) {
+                <tr><td><strong>#@order.Id</strong></td><td><i class="fas fa-user"></i> #@order.UserId</td><td class="price" style="font-size:16px">RD$ @((order.TotalCents / 100m).ToString("N2"))</td></tr>
+            }
+        </tbody>
+    </table>
+</div>

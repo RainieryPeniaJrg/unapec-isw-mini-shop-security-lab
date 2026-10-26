@@ -1,2 +1,18 @@
 @{ ViewData["Title"] = "Iniciar sesión"; }
-<section class="login-card"><div class="eyebrow">TU CUENTA DE LABORATORIO</div><h1>Iniciar sesión</h1><p>Usa una de las cuentas ficticias del README.</p><div asp-validation-summary="All" class="text-danger" role="alert"></div><form asp-action="Login" method="post"><label for="username">Usuario</label><input id="username" name="username" required autocomplete="username" class="form-control" /><label for="password">Contraseña</label><input id="password" name="password" type="password" required autocomplete="current-password" class="form-control" /><button class="btn btn-dark w-100 mt-4">Entrar</button></form><p class="small mt-4">Solo laboratorio local. No uses contraseñas personales.</p></section>
+<section class="login-card">
+    <div class="login-header">
+        <div class="login-icon"><i class="fas fa-shield-halved"></i></div>
+        <div class="eyebrow">PLATAFORMA DEMO EDUCATIVA</div>
+        <h1>Iniciar sesión</h1>
+        <p class="text-muted">Usa una de las cuentas ficticias del laboratorio.</p>
+    </div>
+    <div asp-validation-summary="All" class="text-danger" role="alert"></div>
+    <form asp-action="Login" method="post">
+        <label for="username"><i class="fas fa-user"></i> Usuario</label>
+        <input id="username" name="username" required autocomplete="username" class="form-control" placeholder="ej. cliente-a" />
+        <label for="password"><i class="fas fa-lock"></i> Contraseña</label>
+        <input id="password" name="password" type="password" required autocomplete="current-password" class="form-control" />
+        <button class="btn btn-dark w-100 mt-4"><i class="fas fa-right-to-bracket"></i> Entrar</button>
+    </form>
+    <p class="small mt-4"><i class="fas fa-info-circle"></i> Solo laboratorio local. No uses contraseñas personales.</p>
+</section>

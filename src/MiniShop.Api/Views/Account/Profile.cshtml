@@ -1,3 +1,15 @@
 @model UserResponse
 @{ ViewData["Title"] = "Mi perfil"; }
-<div class="eyebrow">SESIÓN ACTIVA</div><h1>Mi perfil</h1><dl><dt>Usuario</dt><dd>@Model.Username</dd><dt>Rol</dt><dd>@Model.Role</dd><dt>Identificador</dt><dd>@Model.Id</dd></dl><a href="/Products">Ir al catálogo</a>
+<div class="eyebrow"><i class="fas fa-user-shield"></i> SESIÓN ACTIVA</div>
+<h1>Mi perfil</h1>
+<div class="profile-card">
+    <dl>
+        <dt><i class="fas fa-user"></i> Usuario</dt>
+        <dd>@Model.Username</dd>
+        <dt><i class="fas fa-id-badge"></i> Rol</dt>
+        <dd><span class="badge @(Model.Role == "Admin" ? "badge-admin" : Model.Role == "Vendedor" ? "badge-vendedor" : "badge-cliente")">@Model.Role</span></dd>
+        <dt><i class="fas fa-fingerprint"></i> Identificador</dt>
+        <dd>@Model.Id</dd>
+    </dl>
+</div>
+<a href="/Products" class="btn btn-outline-dark mt-4"><i class="fas fa-store"></i> Ir al catálogo</a>

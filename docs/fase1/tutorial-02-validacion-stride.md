@@ -20,7 +20,46 @@ Al terminar este tutorial tendrás:
 
 ## Requisitos previos
 
-### 1. Aplicación corriendo
+### 1. Configurar `LAB_MODE=redteam`
+
+Antes de levantar la aplicación, asegúrate de que existe el archivo `.env` con el modo Red Team activo. Sin él, las vulnerabilidades intencionales del laboratorio quedan deshabilitadas.
+
+**Si es una PC nueva (no existe `.env`):**
+
+```bash
+cd ~/seguridad/unapec-isw-mini-shop-security-lab
+cp .env.example .env
+```
+
+**Si ya existe `.env` pero no tiene `LAB_MODE`**, edítalo con nano:
+
+```bash
+nano .env
+```
+
+Dentro de nano, asegúrate de que contenga esta línea (agrégala si falta):
+
+```
+LAB_MODE=redteam
+```
+
+Para guardar y salir: `Ctrl+O` → `Enter` → `Ctrl+X`.
+
+**Si el compose ya estaba corriendo sin `LAB_MODE`**, después de crear/editar el `.env` recrea el contenedor:
+
+```bash
+docker compose up -d shop --force-recreate
+```
+
+Verifica que el modo quedó activo:
+
+```bash
+docker compose exec shop printenv LAB_MODE
+```
+
+Debe devolver `redteam`.
+
+### 2. Aplicación corriendo
 
 ```bash
 cd ~/seguridad/unapec-isw-mini-shop-security-lab
@@ -40,7 +79,7 @@ curl -s http://127.0.0.1:5081/api/health
 
 Debe responder `Healthy`.
 
-### 2. Cuentas seed
+### 3. Cuentas seed
 
 | Cuenta | Contraseña | Rol | ID usuario | ID carrito | ID pedido |
 |---|---|---|---|---|---|
@@ -51,7 +90,7 @@ Debe responder `Healthy`.
 | `vendedor-lab` | `LabSeller2026!` | Vendedor | 5 | — | — |
 | `admin-lab` | `LabAdmin2026!` | Admin | 6 | — | — |
 
-### 3. Instalar y configurar Burp Suite
+### 4. Instalar y configurar Burp Suite
 
 #### Abrir Burp Suite
 
@@ -90,7 +129,7 @@ Debe responder `Healthy`.
    - Deberías ver las peticiones que hiciste al navegar
    - Si no ves nada, revisa que el Intercept esté en **off** y el listener esté activo
 
-### 4. Herramientas adicionales
+### 5. Herramientas adicionales
 
 Crea los entornos virtuales para los scripts de Python:
 

@@ -25,7 +25,46 @@ El DFD que vamos a validar está en: `threat-model/dfd.md`
 
 ## Parte 0 — Preparación del Entorno
 
-### 0.1 Levantar la aplicación
+### 0.1 Configurar `LAB_MODE=redteam`
+
+Antes de levantar la aplicación, asegúrate de que existe el archivo `.env` con el modo Red Team activo. Sin él, las vulnerabilidades intencionales del laboratorio quedan deshabilitadas.
+
+**Si es una PC nueva (no existe `.env`):**
+
+```bash
+cd ~/seguridad/unapec-isw-mini-shop-security-lab
+cp .env.example .env
+```
+
+**Si ya existe `.env` pero no tiene `LAB_MODE`**, edítalo con nano:
+
+```bash
+nano .env
+```
+
+Dentro de nano, asegúrate de que contenga esta línea (agrégala si falta):
+
+```
+LAB_MODE=redteam
+```
+
+Para guardar y salir: `Ctrl+O` → `Enter` → `Ctrl+X`.
+
+**Si el compose ya estaba corriendo sin `LAB_MODE`**, después de crear/editar el `.env` necesitas recrear el contenedor:
+
+```bash
+docker compose up -d shop --force-recreate
+```
+
+Verifica que el modo quedó activo:
+
+```bash
+docker compose exec shop printenv LAB_MODE
+```
+
+Debe devolver `redteam`.
+
+### 0.2 Levantar la aplicación
 
 Todos los comandos se ejecutan desde el directorio raíz del proyecto.
 
@@ -65,7 +104,7 @@ curl -s -o /dev/null -w "%{http_code}" http://127.0.0.1:5081/Products
 
 **Resultado esperado:** `200`
 
-### 0.2 Configurar Burp Suite Community
+### 0.3 Configurar Burp Suite Community
 
 #### Iniciar Burp Suite
 
@@ -105,7 +144,7 @@ curl -s -o /dev/null -w "%{http_code}" http://127.0.0.1:5081/Products
 
 **Captura de pantalla 0:** Toma una captura de HTTP history mostrando la primera petición capturada y el scope configurado.
 
-### 0.3 Cuentas de prueba disponibles
+### 0.4 Cuentas de prueba disponibles
 
 | Cuenta | Contraseña | Rol |
 |---|---|---|

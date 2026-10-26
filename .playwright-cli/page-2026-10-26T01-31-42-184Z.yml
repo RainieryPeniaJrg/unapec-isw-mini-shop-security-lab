@@ -1,0 +1,80 @@
+- generic [active] [ref=f7e1]:
+  - generic [ref=f7e2]: Universidad APEC — Seguridad de Software ISW — Laboratorio Demo Educativa
+  - banner [ref=f7e3]:
+    - navigation [ref=f7e4]:
+      - link " UNAPEC Mini Shop Proyecto Integrador · Laboratorio de Seguridad" [ref=f7e5] [cursor=pointer]:
+        - /url: /Products
+        - generic [ref=f7e6]: 
+        - generic [ref=f7e8]:
+          - text: UNAPEC Mini Shop
+          - generic [ref=f7e9]: Proyecto Integrador · Laboratorio de Seguridad
+      - generic [ref=f7e10]:
+        - link " Catálogo" [ref=f7e11] [cursor=pointer]:
+          - /url: /Products
+          - generic [ref=f7e12]: 
+          - generic [ref=f7e13]: Catálogo
+        - link " Carrito" [ref=f7e14] [cursor=pointer]:
+          - /url: /Cart
+          - generic [ref=f7e15]: 
+          - generic [ref=f7e16]: Carrito
+        - link " Pedidos" [ref=f7e17] [cursor=pointer]:
+          - /url: /Orders
+          - generic [ref=f7e18]: 
+          - generic [ref=f7e19]: Pedidos
+        - link " cliente-a" [ref=f7e20] [cursor=pointer]:
+          - /url: /Account/Profile
+          - generic [ref=f7e21]: 
+          - generic [ref=f7e22]: cliente-a
+        - button " Salir" [ref=f7e24] [cursor=pointer]:
+          - generic [ref=f7e25]: 
+          - text: Salir
+  - generic [ref=f7e26]:
+    - generic [ref=f7e27]: 
+    - text: RED TEAM · Fallas intencionales activas · Solo datos ficticios y loopback
+  - main [ref=f7e28]:
+    - generic [ref=f7e29]:
+      - generic [ref=f7e30]: 
+      - text: "CARRITO #1"
+    - heading "Tu carrito" [level=1] [ref=f7e31]
+    - paragraph [ref=f7e32]: Revisa cantidades antes de confirmar el pedido sintético.
+    - table [ref=f7e34]:
+      - rowgroup [ref=f7e35]:
+        - row [ref=f7e36]:
+          - columnheader " Producto" [ref=f7e37]:
+            - generic [ref=f7e38]: 
+            - text: Producto
+          - columnheader " Precio" [ref=f7e39]:
+            - generic [ref=f7e40]: 
+            - text: Precio
+          - columnheader "# Cantidad" [ref=f7e41]:
+            - generic [ref=f7e42]: "#"
+            - text: Cantidad
+          - columnheader " Acciones" [ref=f7e43]:
+            - generic [ref=f7e44]: 
+            - text: Acciones
+      - rowgroup [ref=f7e45]:
+        - row [ref=f7e46]:
+          - cell [ref=f7e47]:
+            - strong [ref=f7e48]: Teclado demo
+          - cell "RD$ 2,500.00" [ref=f7e49]
+          - cell [ref=f7e50]:
+            - generic [ref=f7e51]:
+              - generic [ref=f7e52]: Cantidad de Teclado demo
+              - spinbutton "Cantidad de Teclado demo" [ref=f7e53]: "1"
+              - button "" [ref=f7e54] [cursor=pointer]
+          - cell [ref=f7e56]:
+            - button " Retirar" [ref=f7e58] [cursor=pointer]:
+              - generic [ref=f7e59]: 
+              - text: Retirar
+    - generic [ref=f7e60]:
+      - generic [ref=f7e61]:
+        - generic [ref=f7e62]: Total del carrito
+        - generic [ref=f7e63]: RD$ 2,500.00
+      - button " Confirmar pedido" [ref=f7e65] [cursor=pointer]:
+        - generic [ref=f7e66]: 
+        - text: Confirmar pedido
+  - contentinfo [ref=f7e67]:
+    - generic [ref=f7e68]:
+      - generic [ref=f7e69]: 
+      - text: UNAPEC Mini Shop Security Lab · Proyecto Integrador · Fase 1
+    - generic [ref=f7e70]: UNAPEC · ISW · 2026

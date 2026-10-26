@@ -1,0 +1,63 @@
+- generic [active] [ref=f5e1]:
+  - generic [ref=f5e2]: Universidad APEC — Seguridad de Software ISW — Laboratorio Demo Educativa
+  - banner [ref=f5e3]:
+    - navigation [ref=f5e4]:
+      - link " UNAPEC Mini Shop Proyecto Integrador · Laboratorio de Seguridad" [ref=f5e5] [cursor=pointer]:
+        - /url: /Products
+        - generic [ref=f5e6]: 
+        - generic [ref=f5e8]:
+          - text: UNAPEC Mini Shop
+          - generic [ref=f5e9]: Proyecto Integrador · Laboratorio de Seguridad
+      - generic [ref=f5e10]:
+        - link " Catálogo" [ref=f5e11] [cursor=pointer]:
+          - /url: /Products
+          - generic [ref=f5e12]: 
+          - generic [ref=f5e13]: Catálogo
+        - link " Productos" [ref=f5e14] [cursor=pointer]:
+          - /url: /Seller/Products
+          - generic [ref=f5e15]: 
+          - generic [ref=f5e16]: Productos
+        - link " Admin" [ref=f5e17] [cursor=pointer]:
+          - /url: /Admin
+          - generic [ref=f5e18]: 
+          - generic [ref=f5e19]: Admin
+        - link " admin-lab" [ref=f5e20] [cursor=pointer]:
+          - /url: /Account/Profile
+          - generic [ref=f5e21]: 
+          - generic [ref=f5e22]: admin-lab
+        - button " Salir" [ref=f5e24] [cursor=pointer]:
+          - generic [ref=f5e25]: 
+          - text: Salir
+  - generic [ref=f5e26]:
+    - generic [ref=f5e27]: 
+    - text: RED TEAM · Fallas intencionales activas · Solo datos ficticios y loopback
+  - main [ref=f5e28]:
+    - generic [ref=f5e29]:
+      - generic [ref=f5e30]:
+        - generic [ref=f5e31]: 
+        - generic [ref=f5e33]: PLATAFORMA DEMO EDUCATIVA
+        - heading "Iniciar sesión" [level=1] [ref=f5e34]
+        - paragraph [ref=f5e35]: Usa una de las cuentas ficticias del laboratorio.
+      - alert [ref=f5e36]:
+        - list
+      - generic [ref=f5e37]:
+        - generic [ref=f5e38]:
+          - generic [ref=f5e39]: 
+          - text: Usuario
+        - textbox " Usuario" [ref=f5e40]:
+          - /placeholder: ej. cliente-a
+        - generic [ref=f5e41]:
+          - generic [ref=f5e42]: 
+          - text: Contraseña
+        - textbox " Contraseña" [ref=f5e43]
+        - button " Entrar" [ref=f5e44] [cursor=pointer]:
+          - generic [ref=f5e45]: 
+          - text: Entrar
+      - paragraph [ref=f5e46]:
+        - generic [ref=f5e47]: 
+        - text: Solo laboratorio local. No uses contraseñas personales.
+  - contentinfo [ref=f5e48]:
+    - generic [ref=f5e49]:
+      - generic [ref=f5e50]: 
+      - text: UNAPEC Mini Shop Security Lab · Proyecto Integrador · Fase 1
+    - generic [ref=f5e51]: UNAPEC · ISW · 2026

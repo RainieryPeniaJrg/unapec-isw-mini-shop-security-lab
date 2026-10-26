@@ -1,0 +1,115 @@
+- generic [active] [ref=f10e1]:
+  - generic [ref=f10e2]: Universidad APEC — Seguridad de Software ISW — Laboratorio Demo Educativa
+  - banner [ref=f10e3]:
+    - navigation [ref=f10e4]:
+      - link " UNAPEC Mini Shop Proyecto Integrador · Laboratorio de Seguridad" [ref=f10e5] [cursor=pointer]:
+        - /url: /Products
+        - generic [ref=f10e6]: 
+        - generic [ref=f10e8]:
+          - text: UNAPEC Mini Shop
+          - generic [ref=f10e9]: Proyecto Integrador · Laboratorio de Seguridad
+      - generic [ref=f10e10]:
+        - link " Catálogo" [ref=f10e11] [cursor=pointer]:
+          - /url: /Products
+          - generic [ref=f10e12]: 
+          - generic [ref=f10e13]: Catálogo
+        - link " Productos" [ref=f10e14] [cursor=pointer]:
+          - /url: /Seller/Products
+          - generic [ref=f10e15]: 
+          - generic [ref=f10e16]: Productos
+        - link " Admin" [ref=f10e17] [cursor=pointer]:
+          - /url: /Admin
+          - generic [ref=f10e18]: 
+          - generic [ref=f10e19]: Admin
+        - link " admin-lab" [ref=f10e20] [cursor=pointer]:
+          - /url: /Account/Profile
+          - generic [ref=f10e21]: 
+          - generic [ref=f10e22]: admin-lab
+        - button " Salir" [ref=f10e24] [cursor=pointer]:
+          - generic [ref=f10e25]: 
+          - text: Salir
+  - generic [ref=f10e26]:
+    - generic [ref=f10e27]: 
+    - text: RED TEAM · Fallas intencionales activas · Solo datos ficticios y loopback
+  - main [ref=f10e28]:
+    - generic [ref=f10e29]:
+      - generic [ref=f10e30]: 
+      - text: PANEL DE PRODUCTOS
+    - heading "Todos los productos" [level=1] [ref=f10e31]
+    - link "+ Crear producto" [ref=f10e32] [cursor=pointer]:
+      - /url: /Seller/Edit
+      - generic [ref=f10e33]: +
+      - text: Crear producto
+    - table [ref=f10e35]:
+      - rowgroup [ref=f10e36]:
+        - row [ref=f10e37]:
+          - columnheader " Producto" [ref=f10e38]:
+            - generic [ref=f10e39]: 
+            - text: Producto
+          - columnheader " Precio" [ref=f10e40]:
+            - generic [ref=f10e41]: 
+            - text: Precio
+          - columnheader " Vendedor" [ref=f10e42]:
+            - generic [ref=f10e43]: 
+            - text: Vendedor
+          - columnheader " Acciones" [ref=f10e44]:
+            - generic [ref=f10e45]: 
+            - text: Acciones
+      - rowgroup [ref=f10e46]:
+        - row [ref=f10e47]:
+          - cell [ref=f10e48]:
+            - strong [ref=f10e49]: Teclado demo
+          - cell "RD$ 2,500.00" [ref=f10e50]
+          - cell "#5" [ref=f10e51]
+          - cell [ref=f10e52]:
+            - link " Editar" [ref=f10e53] [cursor=pointer]:
+              - /url: /Seller/Edit/1
+              - generic [ref=f10e54]: 
+              - text: Editar
+            - button " Eliminar" [ref=f10e56] [cursor=pointer]:
+              - generic [ref=f10e57]: 
+              - text: Eliminar
+        - row [ref=f10e58]:
+          - cell [ref=f10e59]:
+            - strong [ref=f10e60]: Ratón demo
+          - cell "RD$ 950.00" [ref=f10e61]
+          - cell "#5" [ref=f10e62]
+          - cell [ref=f10e63]:
+            - link " Editar" [ref=f10e64] [cursor=pointer]:
+              - /url: /Seller/Edit/2
+              - generic [ref=f10e65]: 
+              - text: Editar
+            - button " Eliminar" [ref=f10e67] [cursor=pointer]:
+              - generic [ref=f10e68]: 
+              - text: Eliminar
+        - row [ref=f10e69]:
+          - cell [ref=f10e70]:
+            - strong [ref=f10e71]: Cuaderno de pruebas
+          - cell "RD$ 150.00" [ref=f10e72]
+          - cell "#5" [ref=f10e73]
+          - cell [ref=f10e74]:
+            - link " Editar" [ref=f10e75] [cursor=pointer]:
+              - /url: /Seller/Edit/3
+              - generic [ref=f10e76]: 
+              - text: Editar
+            - button " Eliminar" [ref=f10e78] [cursor=pointer]:
+              - generic [ref=f10e79]: 
+              - text: Eliminar
+        - row [ref=f10e80]:
+          - cell [ref=f10e81]:
+            - strong [ref=f10e82]: Test
+          - cell "RD$ 1.00" [ref=f10e83]
+          - cell "#5" [ref=f10e84]
+          - cell [ref=f10e85]:
+            - link " Editar" [ref=f10e86] [cursor=pointer]:
+              - /url: /Seller/Edit/4
+              - generic [ref=f10e87]: 
+              - text: Editar
+            - button " Eliminar" [ref=f10e89] [cursor=pointer]:
+              - generic [ref=f10e90]: 
+              - text: Eliminar
+  - contentinfo [ref=f10e91]:
+    - generic [ref=f10e92]:
+      - generic [ref=f10e93]: 
+      - text: UNAPEC Mini Shop Security Lab · Proyecto Integrador · Fase 1
+    - generic [ref=f10e94]: UNAPEC · ISW · 2026

@@ -1,0 +1,125 @@
+- generic [active] [ref=f3e1]:
+  - generic [ref=f3e2]: Universidad APEC — Seguridad de Software ISW — Laboratorio Demo Educativa
+  - banner [ref=f3e3]:
+    - navigation [ref=f3e4]:
+      - link " UNAPEC Mini Shop Proyecto Integrador · Laboratorio de Seguridad" [ref=f3e5] [cursor=pointer]:
+        - /url: /Products
+        - generic [ref=f3e6]: 
+        - generic [ref=f3e8]:
+          - text: UNAPEC Mini Shop
+          - generic [ref=f3e9]: Proyecto Integrador · Laboratorio de Seguridad
+      - generic [ref=f3e10]:
+        - link " Catálogo" [ref=f3e11] [cursor=pointer]:
+          - /url: /Products
+          - generic [ref=f3e12]: 
+          - generic [ref=f3e13]: Catálogo
+        - link " Productos" [ref=f3e14] [cursor=pointer]:
+          - /url: /Seller/Products
+          - generic [ref=f3e15]: 
+          - generic [ref=f3e16]: Productos
+        - link " Admin" [ref=f3e17] [cursor=pointer]:
+          - /url: /Admin
+          - generic [ref=f3e18]: 
+          - generic [ref=f3e19]: Admin
+        - link " admin-lab" [ref=f3e20] [cursor=pointer]:
+          - /url: /Account/Profile
+          - generic [ref=f3e21]: 
+          - generic [ref=f3e22]: admin-lab
+        - button " Salir" [ref=f3e24] [cursor=pointer]:
+          - generic [ref=f3e25]: 
+          - text: Salir
+  - generic [ref=f3e26]:
+    - generic [ref=f3e27]: 
+    - text: RED TEAM · Fallas intencionales activas · Solo datos ficticios y loopback
+  - main [ref=f3e28]:
+    - generic [ref=f3e29]:
+      - generic [ref=f3e30]: 
+      - text: PANEL ADMIN
+    - heading "Administración del laboratorio" [level=1] [ref=f3e31]
+    - paragraph [ref=f3e32]: Gestión de identidades, productos y pedidos sintéticos de la plataforma demo.
+    - generic [ref=f3e33]:
+      - generic [ref=f3e34]:
+        - generic [ref=f3e35]: 
+        - generic [ref=f3e37]: "6"
+        - generic [ref=f3e38]: Usuarios
+      - generic [ref=f3e39]:
+        - generic [ref=f3e40]: 
+        - generic [ref=f3e42]: "4"
+        - generic [ref=f3e43]: Productos
+      - generic [ref=f3e44]:
+        - generic [ref=f3e45]: 
+        - generic [ref=f3e47]: "2"
+        - generic [ref=f3e48]: Pedidos
+    - link " Administrar productos" [ref=f3e49] [cursor=pointer]:
+      - /url: /Seller/Products
+      - generic [ref=f3e50]: 
+      - text: Administrar productos
+    - heading " Usuarios" [level=2] [ref=f3e51]:
+      - generic [ref=f3e52]: 
+      - text: Usuarios
+    - table [ref=f3e54]:
+      - rowgroup [ref=f3e55]:
+        - row [ref=f3e56]:
+          - columnheader "ID" [ref=f3e57]
+          - columnheader "Usuario" [ref=f3e58]
+          - columnheader "Rol" [ref=f3e59]
+      - rowgroup [ref=f3e60]:
+        - row [ref=f3e61]:
+          - cell "1" [ref=f3e62]
+          - cell [ref=f3e63]:
+            - strong [ref=f3e64]: cliente-a
+          - cell "Cliente" [ref=f3e65]
+        - row [ref=f3e67]:
+          - cell "2" [ref=f3e68]
+          - cell [ref=f3e69]:
+            - strong [ref=f3e70]: cliente-b
+          - cell "Cliente" [ref=f3e71]
+        - row [ref=f3e73]:
+          - cell "3" [ref=f3e74]
+          - cell [ref=f3e75]:
+            - strong [ref=f3e76]: cliente-xss
+          - cell "Cliente" [ref=f3e77]
+        - row [ref=f3e79]:
+          - cell "4" [ref=f3e80]
+          - cell [ref=f3e81]:
+            - strong [ref=f3e82]: cliente-brute
+          - cell "Cliente" [ref=f3e83]
+        - row [ref=f3e85]:
+          - cell "5" [ref=f3e86]
+          - cell [ref=f3e87]:
+            - strong [ref=f3e88]: vendedor-lab
+          - cell "Vendedor" [ref=f3e89]
+        - row [ref=f3e91]:
+          - cell "6" [ref=f3e92]
+          - cell [ref=f3e93]:
+            - strong [ref=f3e94]: admin-lab
+          - cell "Admin" [ref=f3e95]
+    - heading " Pedidos" [level=2] [ref=f3e97]:
+      - generic [ref=f3e98]: 
+      - text: Pedidos
+    - table [ref=f3e100]:
+      - rowgroup [ref=f3e101]:
+        - row [ref=f3e102]:
+          - columnheader "ID" [ref=f3e103]
+          - columnheader "Cliente" [ref=f3e104]
+          - columnheader "Total" [ref=f3e105]
+      - rowgroup [ref=f3e106]:
+        - row [ref=f3e107]:
+          - cell [ref=f3e108]:
+            - strong [ref=f3e109]: "#1"
+          - 'cell " #1" [ref=f3e110]':
+            - generic [ref=f3e111]: 
+            - text: "#1"
+          - cell "RD$ 2,500.00" [ref=f3e112]
+        - row [ref=f3e113]:
+          - cell [ref=f3e114]:
+            - strong [ref=f3e115]: "#2"
+          - 'cell " #2" [ref=f3e116]':
+            - generic [ref=f3e117]: 
+            - text: "#2"
+          - cell "RD$ 950.00" [ref=f3e118]
+  - contentinfo [ref=f3e119]:
+    - generic [ref=f3e120]:
+      - generic [ref=f3e121]: 
+      - text: UNAPEC Mini Shop Security Lab · Proyecto Integrador · Fase 1
+    - generic [ref=f3e122]: UNAPEC · ISW · 2026

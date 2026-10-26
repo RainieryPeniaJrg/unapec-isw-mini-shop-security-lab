@@ -1,0 +1,61 @@
+- generic [active] [ref=f12e1]:
+  - banner [ref=f12e2]:
+    - navigation [ref=f12e3]:
+      - link "Mini Shop UNAPEC · laboratorio local" [ref=f12e4] [cursor=pointer]:
+        - /url: /Products
+        - text: Mini Shop
+        - generic [ref=f12e5]: UNAPEC · laboratorio local
+      - generic [ref=f12e6]:
+        - link "Catálogo" [ref=f12e7] [cursor=pointer]:
+          - /url: /Products
+        - link "Productos" [ref=f12e8] [cursor=pointer]:
+          - /url: /Seller/Products
+        - link "vendedor-lab" [ref=f12e9] [cursor=pointer]:
+          - /url: /Account/Profile
+        - button "Salir" [ref=f12e11] [cursor=pointer]
+  - generic [ref=f12e12]: RED TEAM · Fallas intencionales activas · Solo datos ficticios y loopback
+  - main [ref=f12e13]:
+    - generic [ref=f12e14]: LA TIENDA DEL LABORATORIO
+    - heading "Productos para practicar." [level=1] [ref=f12e15]
+    - paragraph [ref=f12e16]: Explora el catálogo y recorre una compra con datos sintéticos.
+    - generic [ref=f12e17]:
+      - generic [ref=f12e18]: Buscar productos
+      - generic [ref=f12e19]:
+        - textbox "Buscar productos" [ref=f12e20]:
+          - /placeholder: Prueba con demo
+        - button "Buscar" [ref=f12e21] [cursor=pointer]
+    - paragraph [ref=f12e22]: 4 productos
+    - generic [ref=f12e23]:
+      - article [ref=f12e24]:
+        - generic [aria-hidden] [ref=f12e25]: ⌨
+        - generic [ref=f12e26]:
+          - heading "Teclado demo" [level=2] [ref=f12e27]
+          - paragraph [ref=f12e28]: Teclado ficticio de laboratorio.
+          - generic [ref=f12e29]: RD$ 2,500.00
+          - link "Ver producto" [ref=f12e30] [cursor=pointer]:
+            - /url: /Products/Details/1
+      - article [ref=f12e31]:
+        - generic [aria-hidden] [ref=f12e32]: ◉
+        - generic [ref=f12e33]:
+          - heading "Ratón demo" [level=2] [ref=f12e34]
+          - paragraph [ref=f12e35]: Ratón para prácticas académicas.
+          - generic [ref=f12e36]: RD$ 950.00
+          - link "Ver producto" [ref=f12e37] [cursor=pointer]:
+            - /url: /Products/Details/2
+      - article [ref=f12e38]:
+        - generic [aria-hidden] [ref=f12e39]: ▤
+        - generic [ref=f12e40]:
+          - heading "Cuaderno de pruebas" [level=2] [ref=f12e41]
+          - paragraph [ref=f12e42]: Producto sintético para búsqueda.
+          - generic [ref=f12e43]: RD$ 150.00
+          - link "Ver producto" [ref=f12e44] [cursor=pointer]:
+            - /url: /Products/Details/3
+      - article [ref=f12e45]:
+        - generic [aria-hidden] [ref=f12e46]: ⌨
+        - generic [ref=f12e47]:
+          - heading "Test" [level=2] [ref=f12e48]
+          - paragraph [ref=f12e49]: test
+          - generic [ref=f12e50]: RD$ 1.00
+          - link "Ver producto" [ref=f12e51] [cursor=pointer]:
+            - /url: /Products/Details/4
+  - contentinfo [ref=f12e52]: Mini Shop Security Lab · Fase 1 · Sin pagos ni datos reales

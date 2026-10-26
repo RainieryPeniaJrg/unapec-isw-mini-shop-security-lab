@@ -1,0 +1,102 @@
+- generic [active] [ref=f3e1]:
+  - generic [ref=f3e2]: Universidad APEC — Seguridad de Software ISW — Laboratorio Demo Educativa
+  - banner [ref=f3e3]:
+    - navigation [ref=f3e4]:
+      - link " UNAPEC Mini Shop Proyecto Integrador · Laboratorio de Seguridad" [ref=f3e5] [cursor=pointer]:
+        - /url: /Products
+        - generic [ref=f3e6]: 
+        - generic [ref=f3e8]:
+          - text: UNAPEC Mini Shop
+          - generic [ref=f3e9]: Proyecto Integrador · Laboratorio de Seguridad
+      - generic [ref=f3e10]:
+        - link " Catálogo" [ref=f3e11] [cursor=pointer]:
+          - /url: /Products
+          - generic [ref=f3e12]: 
+          - generic [ref=f3e13]: Catálogo
+        - link " Carrito" [ref=f3e14] [cursor=pointer]:
+          - /url: /Cart
+          - generic [ref=f3e15]: 
+          - generic [ref=f3e16]: Carrito
+        - link " Pedidos" [ref=f3e17] [cursor=pointer]:
+          - /url: /Orders
+          - generic [ref=f3e18]: 
+          - generic [ref=f3e19]: Pedidos
+        - link " cliente-xss" [ref=f3e20] [cursor=pointer]:
+          - /url: /Account/Profile
+          - generic [ref=f3e21]: 
+          - generic [ref=f3e22]: cliente-xss
+        - button " Salir" [ref=f3e24] [cursor=pointer]:
+          - generic [ref=f3e25]: 
+          - text: Salir
+  - generic [ref=f3e26]:
+    - generic [ref=f3e27]: 
+    - text: RED TEAM · Fallas intencionales activas · Solo datos ficticios y loopback
+  - main [ref=f3e28]:
+    - generic [ref=f3e29]:
+      - generic [ref=f3e30]: 
+      - text: LA TIENDA DEL LABORATORIO
+    - heading "Catálogo de Productos" [level=1] [ref=f3e31]
+    - paragraph [ref=f3e32]: Explora el catálogo y recorre una compra completa con datos sintéticos de la plataforma demo.
+    - generic [ref=f3e33]:
+      - generic [ref=f3e34]:
+        - generic [ref=f3e35]: 
+        - text: Buscar productos
+      - generic [ref=f3e36]:
+        - textbox " Buscar productos" [ref=f3e37]:
+          - /placeholder: Prueba con demo...
+        - button " Buscar" [ref=f3e38] [cursor=pointer]:
+          - generic [ref=f3e39]: 
+          - text: Buscar
+    - paragraph [ref=f3e40]:
+      - generic [ref=f3e41]: 
+      - text: 4 productos encontrados
+    - generic [ref=f3e42]:
+      - article [ref=f3e43]:
+        - generic [aria-hidden] [ref=f3e44]: ⌨
+        - generic [ref=f3e45]:
+          - heading "Teclado demo" [level=2] [ref=f3e46]
+          - paragraph [ref=f3e47]: Teclado ficticio de laboratorio.
+          - generic [ref=f3e48]: Precio
+          - generic [ref=f3e49]: RD$ 2,500.00
+          - link " Ver producto" [ref=f3e50] [cursor=pointer]:
+            - /url: /Products/Details/1
+            - generic [ref=f3e51]: 
+            - text: Ver producto
+      - article [ref=f3e52]:
+        - generic [aria-hidden] [ref=f3e53]: ◉
+        - generic [ref=f3e54]:
+          - heading "Ratón demo" [level=2] [ref=f3e55]
+          - paragraph [ref=f3e56]: Ratón para prácticas académicas.
+          - generic [ref=f3e57]: Precio
+          - generic [ref=f3e58]: RD$ 950.00
+          - link " Ver producto" [ref=f3e59] [cursor=pointer]:
+            - /url: /Products/Details/2
+            - generic [ref=f3e60]: 
+            - text: Ver producto
+      - article [ref=f3e61]:
+        - generic [aria-hidden] [ref=f3e62]: ▤
+        - generic [ref=f3e63]:
+          - heading "Cuaderno de pruebas" [level=2] [ref=f3e64]
+          - paragraph [ref=f3e65]: Producto sintético para búsqueda.
+          - generic [ref=f3e66]: Precio
+          - generic [ref=f3e67]: RD$ 150.00
+          - link " Ver producto" [ref=f3e68] [cursor=pointer]:
+            - /url: /Products/Details/3
+            - generic [ref=f3e69]: 
+            - text: Ver producto
+      - article [ref=f3e70]:
+        - generic [aria-hidden] [ref=f3e71]: ⌨
+        - generic [ref=f3e72]:
+          - heading "Test" [level=2] [ref=f3e73]
+          - paragraph [ref=f3e74]: test
+          - generic [ref=f3e75]: Precio
+          - generic [ref=f3e76]: RD$ 1.00
+          - link " Ver producto" [ref=f3e77] [cursor=pointer]:
+            - /url: /Products/Details/4
+            - generic [ref=f3e78]: 
+            - text: Ver producto
+  - contentinfo [ref=f3e79]:
+    - generic [ref=f3e80]:
+      - generic [ref=f3e81]: 
+      - text: UNAPEC Mini Shop Security Lab · Proyecto Integrador · Fase 1
+    - generic [ref=f3e82]: UNAPEC · ISW · 2026

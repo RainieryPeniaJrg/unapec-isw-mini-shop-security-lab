@@ -1,0 +1,91 @@
+- generic [active] [ref=e1]:
+  - generic [ref=e2]: Universidad APEC — Seguridad de Software ISW — Laboratorio Demo Educativa
+  - banner [ref=e3]:
+    - navigation [ref=e4]:
+      - link " UNAPEC Mini Shop Proyecto Integrador · Laboratorio de Seguridad" [ref=e5] [cursor=pointer]:
+        - /url: /Products
+        - generic [ref=e6]: 
+        - generic [ref=e8]:
+          - text: UNAPEC Mini Shop
+          - generic [ref=e9]: Proyecto Integrador · Laboratorio de Seguridad
+      - generic [ref=e10]:
+        - link " Catálogo" [ref=e11] [cursor=pointer]:
+          - /url: /Products
+          - generic [ref=e12]: 
+          - generic [ref=e13]: Catálogo
+        - link " Iniciar sesión" [ref=e14] [cursor=pointer]:
+          - /url: /Account/Login
+          - generic [ref=e15]: 
+          - text: Iniciar sesión
+  - generic [ref=e16]:
+    - generic [ref=e17]: 
+    - text: RED TEAM · Fallas intencionales activas · Solo datos ficticios y loopback
+  - main [ref=e18]:
+    - generic [ref=e19]:
+      - generic [ref=e20]: 
+      - text: LA TIENDA DEL LABORATORIO
+    - heading "Catálogo de Productos" [level=1] [ref=e21]
+    - paragraph [ref=e22]: Explora el catálogo y recorre una compra completa con datos sintéticos de la plataforma demo.
+    - generic [ref=e23]:
+      - generic [ref=e24]:
+        - generic [ref=e25]: 
+        - text: Buscar productos
+      - generic [ref=e26]:
+        - textbox " Buscar productos" [ref=e27]:
+          - /placeholder: Prueba con demo...
+        - button " Buscar" [ref=e28] [cursor=pointer]:
+          - generic [ref=e29]: 
+          - text: Buscar
+    - paragraph [ref=e30]:
+      - generic [ref=e31]: 
+      - text: 4 productos encontrados
+    - generic [ref=e32]:
+      - article [ref=e33]:
+        - generic [aria-hidden] [ref=e34]: ⌨
+        - generic [ref=e35]:
+          - heading "Teclado demo" [level=2] [ref=e36]
+          - paragraph [ref=e37]: Teclado ficticio de laboratorio.
+          - generic [ref=e38]: Precio
+          - generic [ref=e39]: RD$ 2,500.00
+          - link " Ver producto" [ref=e40] [cursor=pointer]:
+            - /url: /Products/Details/1
+            - generic [ref=e41]: 
+            - text: Ver producto
+      - article [ref=e42]:
+        - generic [aria-hidden] [ref=e43]: ◉
+        - generic [ref=e44]:
+          - heading "Ratón demo" [level=2] [ref=e45]
+          - paragraph [ref=e46]: Ratón para prácticas académicas.
+          - generic [ref=e47]: Precio
+          - generic [ref=e48]: RD$ 950.00
+          - link " Ver producto" [ref=e49] [cursor=pointer]:
+            - /url: /Products/Details/2
+            - generic [ref=e50]: 
+            - text: Ver producto
+      - article [ref=e51]:
+        - generic [aria-hidden] [ref=e52]: ▤
+        - generic [ref=e53]:
+          - heading "Cuaderno de pruebas" [level=2] [ref=e54]
+          - paragraph [ref=e55]: Producto sintético para búsqueda.
+          - generic [ref=e56]: Precio
+          - generic [ref=e57]: RD$ 150.00
+          - link " Ver producto" [ref=e58] [cursor=pointer]:
+            - /url: /Products/Details/3
+            - generic [ref=e59]: 
+            - text: Ver producto
+      - article [ref=e60]:
+        - generic [aria-hidden] [ref=e61]: ⌨
+        - generic [ref=e62]:
+          - heading "Test" [level=2] [ref=e63]
+          - paragraph [ref=e64]: test
+          - generic [ref=e65]: Precio
+          - generic [ref=e66]: RD$ 1.00
+          - link " Ver producto" [ref=e67] [cursor=pointer]:
+            - /url: /Products/Details/4
+            - generic [ref=e68]: 
+            - text: Ver producto
+  - contentinfo [ref=e69]:
+    - generic [ref=e70]:
+      - generic [ref=e71]: 
+      - text: UNAPEC Mini Shop Security Lab · Proyecto Integrador · Fase 1
+    - generic [ref=e72]: UNAPEC · ISW · 2026

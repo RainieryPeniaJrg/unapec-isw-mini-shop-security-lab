@@ -1,0 +1,31 @@
+- generic [active] [ref=f3e1]:
+  - banner [ref=f3e2]:
+    - navigation [ref=f3e3]:
+      - link "Mini Shop UNAPEC · laboratorio local" [ref=f3e4] [cursor=pointer]:
+        - /url: /Products
+        - text: Mini Shop
+        - generic [ref=f3e5]: UNAPEC · laboratorio local
+      - generic [ref=f3e6]:
+        - link "Catálogo" [ref=f3e7] [cursor=pointer]:
+          - /url: /Products
+        - link "Carrito" [ref=f3e8] [cursor=pointer]:
+          - /url: /Cart
+        - link "Mis pedidos" [ref=f3e9] [cursor=pointer]:
+          - /url: /Orders
+        - link "cliente-a" [ref=f3e10] [cursor=pointer]:
+          - /url: /Account/Profile
+        - button "Salir" [ref=f3e12] [cursor=pointer]
+  - generic [ref=f3e13]: RED TEAM · Fallas intencionales activas · Solo datos ficticios y loopback
+  - main [ref=f3e14]:
+    - generic [ref=f3e15]: SESIÓN ACTIVA
+    - heading "Mi perfil" [level=1] [ref=f3e16]
+    - generic [ref=f3e17]:
+      - term [ref=f3e18]: Usuario
+      - definition [ref=f3e19]: cliente-a
+      - term [ref=f3e20]: Rol
+      - definition [ref=f3e21]: Cliente
+      - term [ref=f3e22]: Identificador
+      - definition [ref=f3e23]: "1"
+    - link "Ir al catálogo" [ref=f3e24] [cursor=pointer]:
+      - /url: /Products
+  - contentinfo [ref=f3e25]: Mini Shop Security Lab · Fase 1 · Sin pagos ni datos reales

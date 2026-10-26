@@ -1,0 +1,61 @@
+- generic [active] [ref=f3e1]:
+  - generic [ref=f3e2]: Universidad APEC — Seguridad de Software ISW — Laboratorio Demo Educativa
+  - banner [ref=f3e3]:
+    - navigation [ref=f3e4]:
+      - link " UNAPEC Mini Shop Proyecto Integrador · Laboratorio de Seguridad" [ref=f3e5] [cursor=pointer]:
+        - /url: /Products
+        - generic [ref=f3e6]: 
+        - generic [ref=f3e8]:
+          - text: UNAPEC Mini Shop
+          - generic [ref=f3e9]: Proyecto Integrador · Laboratorio de Seguridad
+      - generic [ref=f3e10]:
+        - link " Catálogo" [ref=f3e11] [cursor=pointer]:
+          - /url: /Products
+          - generic [ref=f3e12]: 
+          - generic [ref=f3e13]: Catálogo
+        - link " Carrito" [ref=f3e14] [cursor=pointer]:
+          - /url: /Cart
+          - generic [ref=f3e15]: 
+          - generic [ref=f3e16]: Carrito
+        - link " Pedidos" [ref=f3e17] [cursor=pointer]:
+          - /url: /Orders
+          - generic [ref=f3e18]: 
+          - generic [ref=f3e19]: Pedidos
+        - link " cliente-a" [ref=f3e20] [cursor=pointer]:
+          - /url: /Account/Profile
+          - generic [ref=f3e21]: 
+          - generic [ref=f3e22]: cliente-a
+        - button " Salir" [ref=f3e24] [cursor=pointer]:
+          - generic [ref=f3e25]: 
+          - text: Salir
+  - generic [ref=f3e26]:
+    - generic [ref=f3e27]: 
+    - text: RED TEAM · Fallas intencionales activas · Solo datos ficticios y loopback
+  - main [ref=f3e28]:
+    - generic [ref=f3e29]:
+      - generic [ref=f3e30]: 
+      - text: SESIÓN ACTIVA
+    - heading "Mi perfil" [level=1] [ref=f3e31]
+    - generic [ref=f3e33]:
+      - term [ref=f3e34]:
+        - generic [ref=f3e35]: 
+        - text: Usuario
+      - definition [ref=f3e36]: cliente-a
+      - term [ref=f3e37]:
+        - generic [ref=f3e38]: 
+        - text: Rol
+      - definition [ref=f3e39]:
+        - generic [ref=f3e40]: Cliente
+      - term [ref=f3e41]:
+        - generic [ref=f3e42]: 
+        - text: Identificador
+      - definition [ref=f3e43]: "1"
+    - link " Ir al catálogo" [ref=f3e44] [cursor=pointer]:
+      - /url: /Products
+      - generic [ref=f3e45]: 
+      - text: Ir al catálogo
+  - contentinfo [ref=f3e46]:
+    - generic [ref=f3e47]:
+      - generic [ref=f3e48]: 
+      - text: UNAPEC Mini Shop Security Lab · Proyecto Integrador · Fase 1
+    - generic [ref=f3e49]: UNAPEC · ISW · 2026

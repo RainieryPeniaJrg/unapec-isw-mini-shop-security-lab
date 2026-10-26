@@ -1,0 +1,25 @@
+- generic [active] [ref=f7e1]:
+  - banner [ref=f7e2]:
+    - navigation [ref=f7e3]:
+      - link "Mini Shop UNAPEC · laboratorio local" [ref=f7e4] [cursor=pointer]:
+        - /url: /Products
+        - text: Mini Shop
+        - generic [ref=f7e5]: UNAPEC · laboratorio local
+      - generic [ref=f7e6]:
+        - link "Catálogo" [ref=f7e7] [cursor=pointer]:
+          - /url: /Products
+        - link "Carrito" [ref=f7e8] [cursor=pointer]:
+          - /url: /Cart
+        - link "Mis pedidos" [ref=f7e9] [cursor=pointer]:
+          - /url: /Orders
+        - link "cliente-a" [ref=f7e10] [cursor=pointer]:
+          - /url: /Account/Profile
+        - button "Salir" [ref=f7e12] [cursor=pointer]
+  - generic [ref=f7e13]: RED TEAM · Fallas intencionales activas · Solo datos ficticios y loopback
+  - main [ref=f7e14]:
+    - heading "Mis pedidos" [level=1] [ref=f7e15]
+    - article [ref=f7e16]:
+      - 'link "Pedido #1" [ref=f7e17] [cursor=pointer]':
+        - /url: /Orders/Details/1
+      - text: · 2026-10-25 16:53 · RD$ 2,500.00
+  - contentinfo [ref=f7e18]: Mini Shop Security Lab · Fase 1 · Sin pagos ni datos reales

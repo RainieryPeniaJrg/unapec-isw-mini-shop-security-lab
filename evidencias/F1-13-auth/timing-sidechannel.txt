@@ -1,0 +1,17 @@
+=== Timing Side-Channel ===
+Usuario existente (admin-lab):
+  Intento 1: 0.003198s
+  Intento 2: 0.004570s
+  Intento 3: 0.003672s
+  Promedio: ~3.8ms
+
+Usuario inexistente (fake_user_xyz):
+  Intento 1: 0.003614s
+  Intento 2: 0.002684s
+  Intento 3: 0.002452s
+  Promedio: ~2.9ms
+
+RESULTADO: Diferencia observable (~1ms) entre usuarios existentes e inexistentes
+- Usuarios existentes → hash bcrypt se computa
+- Usuarios inexistentes → retorno inmediato
+→ CWE-208: Observable Timing Discrepancy

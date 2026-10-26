@@ -1,0 +1,1 @@
+  → HttpOnly ausente = JavaScript puede leer la cookie

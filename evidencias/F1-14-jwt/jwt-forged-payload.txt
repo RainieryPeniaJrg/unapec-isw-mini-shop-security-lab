@@ -1,0 +1,8 @@
+{
+  "sub": "1",
+  "unique_name": "cliente-a",
+  "role": "Admin",
+  "exp": 1792987007,
+  "iss": "MiniShopLab",
+  "aud": "MiniShopLab"
+}

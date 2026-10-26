@@ -1,0 +1,1 @@
+  GET /api/admin → HTTP 403 (esperado: 403)

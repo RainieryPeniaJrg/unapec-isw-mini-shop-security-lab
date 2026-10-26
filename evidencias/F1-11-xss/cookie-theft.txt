@@ -1,0 +1,1 @@
+  GET /lab/collect?c= → HTTP 204

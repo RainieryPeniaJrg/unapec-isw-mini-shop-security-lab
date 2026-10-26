@@ -1,0 +1,2 @@
+{"id":2,"userId":2,"items":[{"id":2,"productId":2,"name":"Ratón demo","priceCents":95000,"quantity":5},{"id":3,"productId":1,"name":"Teclado demo","priceCents":250000,"quantity":5}],"totalCents":1725000}
+HTTP:201

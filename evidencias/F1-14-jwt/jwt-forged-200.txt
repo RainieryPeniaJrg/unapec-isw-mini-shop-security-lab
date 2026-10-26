@@ -1,0 +1,19 @@
+=== JWT Forgery — Acceso Admin ===
+GET /api/admin con token forjado (role=Admin)
+
+HTTP 200 OK
+
+Response body:
+{
+  "users": [
+    {"id": 1, "username": "cliente-a", "role": "Cliente"},
+    {"id": 2, "username": "cliente-b", "role": "Cliente"},
+    {"id": 3, "username": "cliente-xss", "role": "Cliente"},
+    {"id": 4, "username": "cliente-brute", "role": "Cliente"},
+    {"id": 5, "username": "admin-lab", "role": "Admin"}
+  ]
+}
+
+→ Lista completa de usuarios del sistema expuesta
+→ 5 usuarios: 4 Clientes + 1 Admin
+→ Escalación de privilegios CONFIRMADA

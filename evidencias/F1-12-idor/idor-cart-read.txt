@@ -1,0 +1,4 @@
+   → HTTP 200 | Cart id=2 userId=2 items=1 total=475000
+   → IDOR: usuario sub=1 accedió a datos de userId=2
+   → HTTP 200 | Cart id=3 userId=3 items=0 total=0
+   → IDOR: usuario sub=1 accedió a datos del ADMIN (userId=3)

@@ -1,0 +1,10 @@
+=== Ausencia de Rate Limiting ===
+10 intentos consecutivos de login con credenciales incorrectas:
+#1:400 #2:400 #3:400 #4:400 #5:400 #6:400 #7:400 #8:400 #9:400 #10:400
+
+RESULTADO: Todos retornaron HTTP 400 (credenciales incorrectas)
+- Ningún HTTP 429 (Too Many Requests)
+- Sin bloqueo de cuenta
+- Sin CAPTCHA
+- Sin incremento de delay
+→ CWE-307: Improper Restriction of Excessive Authentication Attempts

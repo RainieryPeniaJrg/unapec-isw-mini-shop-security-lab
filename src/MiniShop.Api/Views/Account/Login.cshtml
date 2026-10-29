@@ -1,18 +1,27 @@
 @{ ViewData["Title"] = "Iniciar sesión"; }
-<section class="login-card">
-    <div class="login-header">
-        <div class="login-icon"><i class="fas fa-shield-halved"></i></div>
+<section class="login-stage">
+    <div class="login-story">
+        <div class="story-mark"><i class="fas fa-shield-halved"></i></div>
         <div class="eyebrow">PLATAFORMA DEMO EDUCATIVA</div>
-        <h1>Iniciar sesión</h1>
-        <p class="text-muted">Usa una de las cuentas ficticias del laboratorio.</p>
+        <h1>Una tienda pequeña para probar decisiones grandes.</h1>
+        <p>Accede al entorno local y explora el flujo completo de una tienda construida para el laboratorio de seguridad.</p>
+        <div class="story-rule"></div>
+        <span class="story-note">UNAPEC · ISW · Fase 1</span>
     </div>
-    <div asp-validation-summary="All" class="text-danger" role="alert"></div>
-    <form asp-action="Login" method="post">
-        <label for="username"><i class="fas fa-user"></i> Usuario</label>
-        <input id="username" name="username" required autocomplete="username" class="form-control" placeholder="ej. cliente-a" />
-        <label for="password"><i class="fas fa-lock"></i> Contraseña</label>
-        <input id="password" name="password" type="password" required autocomplete="current-password" class="form-control" />
-        <button class="btn btn-dark w-100 mt-4"><i class="fas fa-right-to-bracket"></i> Entrar</button>
-    </form>
-    <p class="small mt-4"><i class="fas fa-info-circle"></i> Solo laboratorio local. No uses contraseñas personales.</p>
+    <div class="login-card">
+        <div class="login-header">
+            <span class="login-kicker">Acceso al laboratorio</span>
+            <h2>Iniciar sesión</h2>
+            <p class="text-muted">Usa una de las cuentas ficticias del laboratorio.</p>
+        </div>
+        <div asp-validation-summary="All" class="text-danger" role="alert"></div>
+        <form asp-action="Login" method="post">
+            <label for="username"><i class="fas fa-user"></i> Usuario</label>
+            <input id="username" name="username" required autocomplete="username" class="form-control" placeholder="ej. cliente-a" />
+            <label for="password"><i class="fas fa-lock"></i> Contraseña</label>
+            <input id="password" name="password" type="password" required autocomplete="current-password" class="form-control" />
+            <button class="btn btn-dark w-100 mt-4"><i class="fas fa-right-to-bracket"></i> Entrar</button>
+        </form>
+        <p class="small mt-4"><i class="fas fa-info-circle"></i> Solo laboratorio local. No uses contraseñas personales.</p>
+    </div>
 </section>

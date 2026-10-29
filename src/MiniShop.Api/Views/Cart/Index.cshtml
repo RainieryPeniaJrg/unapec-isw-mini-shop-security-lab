@@ -1,48 +1,43 @@
 @model CartResponse
 @{ ViewData["Title"] = "Carrito"; }
-<div class="eyebrow"><i class="fas fa-cart-shopping"></i> CARRITO #@Model.Id</div>
-<h1>Tu carrito</h1>
-<p class="lead">Revisa cantidades antes de confirmar el pedido sintético.</p>
+<section class="page-heading">
+    <div class="eyebrow"><i class="fas fa-cart-shopping"></i> CARRITO #@Model.Id</div>
+    <h1>Tu carrito</h1>
+    <p class="lead">Revisa cantidades antes de confirmar el pedido sintético.</p>
+</section>
 @if (Model.Items.Count == 0) {
-    <p class="mt-4"><i class="fas fa-cart-arrow-down"></i> Tu carrito está vacío. <a href="/Products">Explora el catálogo</a>.</p>
+    <div class="empty-state empty-cart"><i class="fas fa-cart-arrow-down"></i><div><h2>Tu carrito está vacío</h2><p>Encuentra algo que te interese en el catálogo.</p><a href="/Products" class="btn btn-dark">Explora el catálogo</a></div></div>
 } else {
-    <div class="table-responsive mt-4">
-        <table class="table">
-            <thead><tr><th><i class="fas fa-box"></i> Producto</th><th><i class="fas fa-tag"></i> Precio</th><th><i class="fas fa-hashtag"></i> Cantidad</th><th><i class="fas fa-gear"></i> Acciones</th></tr></thead>
-            <tbody>
-            @foreach (var item in Model.Items) {
-                <tr>
-                    <td><strong>@item.Name</strong></td>
-                    <td>RD$ @((item.PriceCents / 100m).ToString("N2"))</td>
-                    <td>
-                        <form asp-action="Update" method="post" class="inline-form">
-                            <input type="hidden" name="cartId" value="@Model.Id" />
-                            <input type="hidden" name="itemId" value="@item.Id" />
-                            <label class="visually-hidden" for="qty-@item.Id">Cantidad de @item.Name</label>
-                            <input id="qty-@item.Id" name="quantity" type="number" min="1" max="99" value="@item.Quantity" class="form-control quantity" />
-                            <button class="btn btn-outline-dark"><i class="fas fa-sync-alt"></i></button>
-                        </form>
-                    </td>
-                    <td>
-                        <form asp-action="Remove" method="post">
-                            <input type="hidden" name="cartId" value="@Model.Id" />
-                            <input type="hidden" name="itemId" value="@item.Id" />
-                            <button class="btn btn-outline-danger"><i class="fas fa-trash-alt"></i> Retirar</button>
-                        </form>
-                    </td>
-                </tr>
-            }
-            </tbody>
-        </table>
-    </div>
-    <div class="total-card">
-        <div>
-            <div class="total-label">Total del carrito</div>
-            <div class="price">RD$ @((Model.TotalCents / 100m).ToString("N2"))</div>
-        </div>
-        <form asp-action="Checkout" method="post">
-            <input type="hidden" name="cartId" value="@Model.Id" />
-            <button class="btn btn-gold"><i class="fas fa-check-circle"></i> Confirmar pedido</button>
-        </form>
+    <div class="cart-layout">
+        <section class="cart-lines" aria-label="Productos del carrito">
+            <div class="section-heading"><div><h2>Productos</h2><span class="section-meta">@Model.Items.Count artículo(s) en tu pedido</span></div></div>
+            <div class="table-responsive">
+                <table class="table">
+                    <thead><tr><th><i class="fas fa-box"></i> Producto</th><th><i class="fas fa-tag"></i> Precio</th><th><i class="fas fa-hashtag"></i> Cantidad</th><th><i class="fas fa-gear"></i> Acciones</th></tr></thead>
+                    <tbody>
+                    @foreach (var item in Model.Items) {
+                        <tr>
+                            <td><strong>@item.Name</strong></td>
+                            <td>RD$ @((item.PriceCents / 100m).ToString("N2"))</td>
+                            <td>
+                                <form asp-action="Update" method="post" class="inline-form">
+                                    <input type="hidden" name="cartId" value="@Model.Id" />
+                                    <input type="hidden" name="itemId" value="@item.Id" />
+                                    <label class="visually-hidden" for="qty-@item.Id">Cantidad de @item.Name</label>
+                                    <input id="qty-@item.Id" name="quantity" type="number" min="1" max="99" value="@item.Quantity" class="form-control quantity" />
+                                    <button class="btn btn-outline-dark"><i class="fas fa-sync-alt"></i></button>
+                                </form>
+                            </td>
+                            <td><form asp-action="Remove" method="post"><input type="hidden" name="cartId" value="@Model.Id" /><input type="hidden" name="itemId" value="@item.Id" /><button class="btn btn-outline-danger"><i class="fas fa-trash-alt"></i> Retirar</button></form></td>
+                        </tr>
+                    }
+                    </tbody>
+                </table>
+            </div>
+        </section>
+        <aside class="total-card cart-summary">
+            <div><div class="total-label">Total del carrito</div><div class="price">RD$ @((Model.TotalCents / 100m).ToString("N2"))</div><span class="summary-note">Impuestos y descuentos según el flujo del laboratorio.</span></div>
+            <form asp-action="Checkout" method="post"><input type="hidden" name="cartId" value="@Model.Id" /><button class="btn btn-gold"><i class="fas fa-check-circle"></i> Confirmar pedido</button></form>
+        </aside>
     </div>
 }

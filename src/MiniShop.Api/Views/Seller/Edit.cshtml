@@ -2,7 +2,7 @@
 @{ ViewData["Title"] = Model.Id == 0 ? "Crear producto" : "Editar producto"; }
 <a href="/Seller/Products" class="back-link"><i class="fas fa-arrow-left"></i> Volver a productos</a>
 <div class="eyebrow"><i class="fas @(Model.Id == 0 ? "fa-plus-circle" : "fa-pen-to-square")"></i> @(Model.Id == 0 ? "NUEVO PRODUCTO" : "EDITAR PRODUCTO")</div>
-<h1>@ViewData["Title"]</h1>
+<h1 class="form-page-title">@ViewData["Title"]</h1>
 <div asp-validation-summary="All" class="text-danger"></div>
 <form asp-action="Save" method="post" class="editor">
     <input type="hidden" name="id" value="@Model.Id" />

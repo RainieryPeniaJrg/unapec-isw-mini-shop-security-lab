@@ -1,28 +1,35 @@
 @model List<ProductResponse>
 @{ ViewData["Title"] = "Catálogo"; }
-<div class="eyebrow"><i class="fas fa-store"></i> LA TIENDA DEL LABORATORIO</div>
-<h1>Catálogo de Productos</h1>
-<p class="lead">Explora el catálogo y recorre una compra completa con datos sintéticos de la plataforma demo.</p>
-<form method="get" class="search">
-    <label for="q"><i class="fas fa-magnifying-glass"></i> Buscar productos</label>
-    <div class="input-group">
-        <input id="q" name="q" value="@ViewBag.Query" class="form-control" placeholder="Prueba con demo..." />
-        <button class="btn btn-dark"><i class="fas fa-search"></i> Buscar</button>
+<section class="catalog-intro">
+    <div class="catalog-heading">
+        <div class="eyebrow"><i class="fas fa-store"></i> LA TIENDA DEL LABORATORIO</div>
+        <h1>Catálogo de productos</h1>
+        <p class="lead">Explora el catálogo y recorre una compra completa con datos sintéticos de la plataforma demo.</p>
     </div>
-</form>
-<p class="text-muted mt-4"><i class="fas fa-box-open"></i> @Model.Count productos encontrados</p>
+    <form method="get" class="search">
+        <label for="q"><i class="fas fa-magnifying-glass"></i> Buscar productos</label>
+        <div class="input-group">
+            <input id="q" name="q" value="@ViewBag.Query" class="form-control" placeholder="Prueba con demo..." />
+            <button class="btn btn-dark"><i class="fas fa-search"></i> Buscar</button>
+        </div>
+    </form>
+</section>
+<div class="catalog-meta"><span><i class="fas fa-box-open"></i> @Model.Count productos encontrados</span></div>
 <div class="product-grid">
 @foreach (var product in Model) {
-    <article class="card">
+    <article class="card product-card">
         <div class="product-art" aria-hidden="true">@(product.Id % 3 == 1 ? "⌨" : product.Id % 3 == 2 ? "◉" : "▤")</div>
         <div class="card-body">
-            <h2>@product.Name</h2>
-            <p>@product.Description</p>
-            <div class="price-label">Precio</div>
-            <div class="price">RD$ @((product.PriceCents / 100m).ToString("N2"))</div>
-            <a class="btn btn-outline-dark" href="/Products/Details/@product.Id"><i class="fas fa-eye"></i> Ver producto</a>
+            <div class="product-copy">
+                <h2>@product.Name</h2>
+                <p>@product.Description</p>
+            </div>
+            <div class="product-footer">
+                <div><div class="price-label">Precio</div><div class="price">RD$ @((product.PriceCents / 100m).ToString("N2"))</div></div>
+                <a class="btn btn-outline-dark" href="/Products/Details/@product.Id"><i class="fas fa-eye"></i> Ver producto</a>
+            </div>
         </div>
     </article>
 }
 </div>
-@if (Model.Count == 0) { <p class="mt-4"><i class="fas fa-search"></i> No encontramos productos. Prueba otra búsqueda.</p> }
+@if (Model.Count == 0) { <div class="empty-state"><i class="fas fa-search"></i><p>No encontramos productos. Prueba otra búsqueda.</p></div> }

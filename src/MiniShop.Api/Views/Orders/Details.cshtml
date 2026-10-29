@@ -1,7 +1,7 @@
 @model OrderResponse
 @{ ViewData["Title"] = "Pedido " + Model.Id; }
 <a href="/Orders" class="back-link"><i class="fas fa-arrow-left"></i> Mis pedidos</a>
-<div class="eyebrow"><i class="fas fa-file-invoice"></i> PEDIDO SINTÉTICO</div>
+<div class="eyebrow"><i class="fas fa-file-invoice"></i> DETALLE DEL PEDIDO</div>
 <h1>Pedido #@Model.Id</h1>
 <p class="text-muted"><i class="fas fa-user"></i> Cliente #@Model.UserId · <i class="fas fa-calendar"></i> @Model.CreatedAt.ToString("dd MMM yyyy · HH:mm") UTC</p>
 <div class="order-detail-layout"><div class="table-responsive mt-4">

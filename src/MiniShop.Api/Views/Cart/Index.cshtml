@@ -3,7 +3,7 @@
 <section class="page-heading">
     <div class="eyebrow"><i class="fas fa-cart-shopping"></i> CARRITO #@Model.Id</div>
     <h1>Tu carrito</h1>
-    <p class="lead">Revisa cantidades antes de confirmar el pedido sintético.</p>
+    <p class="lead">Revisa las cantidades antes de finalizar tu compra.</p>
 </section>
 @if (Model.Items.Count == 0) {
     <div class="empty-state empty-cart"><i class="fas fa-cart-arrow-down"></i><div><h2>Tu carrito está vacío</h2><p>Encuentra algo que te interese en el catálogo.</p><a href="/Products" class="btn btn-dark">Explora el catálogo</a></div></div>
@@ -36,7 +36,7 @@
             </div>
         </section>
         <aside class="total-card cart-summary">
-            <div><div class="total-label">Total del carrito</div><div class="price">RD$ @((Model.TotalCents / 100m).ToString("N2"))</div><span class="summary-note">Impuestos y descuentos según el flujo del laboratorio.</span></div>
+            <div><div class="total-label">Total del carrito</div><div class="price">RD$ @((Model.TotalCents / 100m).ToString("N2"))</div><span class="summary-note">Consulta el total antes de confirmar tu pedido.</span></div>
             <form asp-action="Checkout" method="post"><input type="hidden" name="cartId" value="@Model.Id" /><button class="btn btn-gold"><i class="fas fa-check-circle"></i> Confirmar pedido</button></form>
         </aside>
     </div>

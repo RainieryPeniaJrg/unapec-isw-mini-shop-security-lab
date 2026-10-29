@@ -274,3 +274,14 @@ header { background: rgba(255,255,255,.96); border-bottom: 1px solid #e7edf2; bo
   .order-detail-layout .total-card { max-width: none; }
   .empty-state { align-items: flex-start; }
 }
+
+/* Footer shares the navbar's quiet, branded chrome. */
+footer { width: 100%; padding: 0; color: var(--muted); background: rgba(255,255,255,.96); border-top: 1px solid #e7edf2; font-size: 12px; }
+.footer-inner { display: flex; align-items: center; justify-content: space-between; gap: 24px; min-height: 72px; }
+.footer-left { display: flex; align-items: center; gap: 10px; color: var(--navy); }
+.footer-left strong { display: block; font-size: 14px; line-height: 1.1; }
+.footer-left small { display: block; margin-top: 3px; color: var(--slate); font-size: 10px; }
+.footer-brand-mark { display: grid; width: 34px; height: 34px; place-items: center; color: #fff; background: var(--navy); border-radius: 9px; }
+.footer-brand-mark i { margin: 0; color: var(--cyan); font-size: 13px; }
+.footer-right { color: var(--slate); font-size: 11px; letter-spacing: .02em; }
+@media (max-width: 640px) { .footer-inner { align-items: flex-start; flex-direction: column; justify-content: center; gap: 10px; min-height: 104px; } }

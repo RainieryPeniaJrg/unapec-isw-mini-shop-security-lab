@@ -1,4 +1,4 @@
-=== Enumeración de Usuarios via API ===
+=== Enumeración de Usuarios via API (2026-10-29) ===
 POST /api/auth/login {"username":"admin-lab","password":"WrongPwd!"}
 → {"title":"Contraseña incorrecta.","status":401}
 
@@ -6,6 +6,4 @@ POST /api/auth/login {"username":"noexiste99","password":"WrongPwd!"}
 → {"title":"Usuario inexistente.","status":401}
 
 RESULTADO: Mensajes de error DIFERENTES revelan existencia de usuarios
-- "Contraseña incorrecta" = usuario EXISTE
-- "Usuario inexistente" = usuario NO EXISTE
 → CWE-204: Observable Response Discrepancy

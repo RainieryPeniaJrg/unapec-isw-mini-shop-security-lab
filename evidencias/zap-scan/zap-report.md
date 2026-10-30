@@ -10,7 +10,7 @@ ZAP by [Checkmarx](https://checkmarx.com/).
 | High | 0 |
 | Medium | 2 |
 | Low | 5 |
-| Informational | 4 |
+| Informational | 5 |
 
 
 
@@ -27,7 +27,6 @@ ZAP by [Checkmarx](https://checkmarx.com/).
 | Info | Informational | http://127.0.0.1:5081 | Percentage of endpoints with method GET | 92 % |
 | Info | Informational | http://127.0.0.1:5081 | Percentage of endpoints with method POST | 7 % |
 | Info | Informational | http://127.0.0.1:5081 | Count of total endpoints | 14    |
-| Info | Informational | http://127.0.0.1:5081 | Percentage of slow responses | 43 % |
 
 
 
@@ -41,12 +40,13 @@ ZAP by [Checkmarx](https://checkmarx.com/).
 | --- | --- | --- |
 | Content Security Policy (CSP) Header Not Set | Medium | Systemic |
 | Missing Anti-clickjacking Header | Medium | Systemic |
-| Cross-Origin-Embedder-Policy Header Missing or Invalid | Low | 4 |
-| Cross-Origin-Opener-Policy Header Missing or Invalid | Low | 4 |
+| Cross-Origin-Embedder-Policy Header Missing or Invalid | Low | Systemic |
+| Cross-Origin-Opener-Policy Header Missing or Invalid | Low | Systemic |
 | Cross-Origin-Resource-Policy Header Missing or Invalid | Low | Systemic |
 | Permissions Policy Header Not Set | Low | Systemic |
 | X-Content-Type-Options Header Missing | Low | Systemic |
 | Authentication Request Identified | Informational | 1 |
+| Non-Storable Content | Informational | 1 |
 | Session Management Response Identified | Informational | 1 |
 | Storable and Cacheable Content | Informational | Systemic |
 | User Controllable HTML Element Attribute (Potential XSS) | Informational | 2 |
@@ -154,13 +154,6 @@ The response does not protect against 'ClickJacking' attacks. It should include 
   * Attack: ``
   * Evidence: ``
   * Other Info: ``
-* URL: http://127.0.0.1:5081/Products/Details/1
-  * Node Name: `http://127.0.0.1:5081/Products/Details/1`
-  * Method: `GET`
-  * Parameter: `x-frame-options`
-  * Attack: ``
-  * Evidence: ``
-  * Other Info: ``
 * URL: http://127.0.0.1:5081/Products/Details/2
   * Node Name: `http://127.0.0.1:5081/Products/Details/2`
   * Method: `GET`
@@ -207,15 +200,22 @@ If you expect the page to be framed only by pages on your server (e.g. it's part
 
 Cross-Origin-Embedder-Policy header is a response header that prevents a document from loading any cross-origin resources that don't explicitly grant the document permission (using CORP or CORS).
 
-* URL: http://127.0.0.1:5081/%3Fq=ZAP
-  * Node Name: `http://127.0.0.1:5081/ (q)`
+* URL: http://127.0.0.1:5081/Products
+  * Node Name: `http://127.0.0.1:5081/Products`
   * Method: `GET`
   * Parameter: `Cross-Origin-Embedder-Policy`
   * Attack: ``
   * Evidence: ``
   * Other Info: ``
-* URL: http://127.0.0.1:5081/Products%3Fq=ZAP
-  * Node Name: `http://127.0.0.1:5081/Products (q)`
+* URL: http://127.0.0.1:5081/Products/Details/1
+  * Node Name: `http://127.0.0.1:5081/Products/Details/1`
+  * Method: `GET`
+  * Parameter: `Cross-Origin-Embedder-Policy`
+  * Attack: ``
+  * Evidence: ``
+  * Other Info: ``
+* URL: http://127.0.0.1:5081/Products/Details/2
+  * Node Name: `http://127.0.0.1:5081/Products/Details/2`
   * Method: `GET`
   * Parameter: `Cross-Origin-Embedder-Policy`
   * Attack: ``
@@ -236,8 +236,8 @@ Cross-Origin-Embedder-Policy header is a response header that prevents a documen
   * Evidence: ``
   * Other Info: ``
 
+Instances: Systemic
 
-Instances: 4
 
 ### Solution
 
@@ -267,15 +267,22 @@ If possible, ensure that the end user uses a standards-compliant and modern web 
 
 Cross-Origin-Opener-Policy header is a response header that allows a site to control if others included documents share the same browsing context. Sharing the same browsing context with untrusted documents might lead to data leak.
 
-* URL: http://127.0.0.1:5081/%3Fq=ZAP
-  * Node Name: `http://127.0.0.1:5081/ (q)`
+* URL: http://127.0.0.1:5081/Products
+  * Node Name: `http://127.0.0.1:5081/Products`
   * Method: `GET`
   * Parameter: `Cross-Origin-Opener-Policy`
   * Attack: ``
   * Evidence: ``
   * Other Info: ``
-* URL: http://127.0.0.1:5081/Products%3Fq=ZAP
-  * Node Name: `http://127.0.0.1:5081/Products (q)`
+* URL: http://127.0.0.1:5081/Products/Details/1
+  * Node Name: `http://127.0.0.1:5081/Products/Details/1`
+  * Method: `GET`
+  * Parameter: `Cross-Origin-Opener-Policy`
+  * Attack: ``
+  * Evidence: ``
+  * Other Info: ``
+* URL: http://127.0.0.1:5081/Products/Details/2
+  * Node Name: `http://127.0.0.1:5081/Products/Details/2`
   * Method: `GET`
   * Parameter: `Cross-Origin-Opener-Policy`
   * Attack: ``
@@ -296,8 +303,8 @@ Cross-Origin-Opener-Policy header is a response header that allows a site to con
   * Evidence: ``
   * Other Info: ``
 
+Instances: Systemic
 
-Instances: 4
 
 ### Solution
 
@@ -328,8 +335,22 @@ If possible, ensure that the end user uses a standards-compliant and modern web 
 
 Cross-Origin-Resource-Policy header is an opt-in header designed to counter side-channels attacks like Spectre. Resource should be specifically set as shareable amongst different origins.
 
-* URL: http://127.0.0.1:5081/Products%3Fq=ZAP
-  * Node Name: `http://127.0.0.1:5081/Products (q)`
+* URL: http://127.0.0.1:5081
+  * Node Name: `http://127.0.0.1:5081`
+  * Method: `GET`
+  * Parameter: `Cross-Origin-Resource-Policy`
+  * Attack: ``
+  * Evidence: ``
+  * Other Info: ``
+* URL: http://127.0.0.1:5081/Products
+  * Node Name: `http://127.0.0.1:5081/Products`
+  * Method: `GET`
+  * Parameter: `Cross-Origin-Resource-Policy`
+  * Attack: ``
+  * Evidence: ``
+  * Other Info: ``
+* URL: http://127.0.0.1:5081/Products/Details/1
+  * Node Name: `http://127.0.0.1:5081/Products/Details/1`
   * Method: `GET`
   * Parameter: `Cross-Origin-Resource-Policy`
   * Attack: ``
@@ -342,22 +363,8 @@ Cross-Origin-Resource-Policy header is an opt-in header designed to counter side
   * Attack: ``
   * Evidence: ``
   * Other Info: ``
-* URL: http://127.0.0.1:5081/Products/Details/4
-  * Node Name: `http://127.0.0.1:5081/Products/Details/4`
-  * Method: `GET`
-  * Parameter: `Cross-Origin-Resource-Policy`
-  * Attack: ``
-  * Evidence: ``
-  * Other Info: ``
 * URL: http://127.0.0.1:5081/css/site.css
   * Node Name: `http://127.0.0.1:5081/css/site.css`
-  * Method: `GET`
-  * Parameter: `Cross-Origin-Resource-Policy`
-  * Attack: ``
-  * Evidence: ``
-  * Other Info: ``
-* URL: http://127.0.0.1:5081/lib/bootstrap/bootstrap.min.css
-  * Node Name: `http://127.0.0.1:5081/lib/bootstrap/bootstrap.min.css`
   * Method: `GET`
   * Parameter: `Cross-Origin-Resource-Policy`
   * Attack: ``
@@ -397,22 +404,22 @@ If possible, ensure that the end user uses a standards-compliant and modern web 
 
 Permissions Policy Header is an added layer of security that helps to restrict from unauthorized access or usage of browser/client features by web resources. This policy ensures the user privacy by limiting or specifying the features of the browsers can be used by the web resources. Permissions Policy provides a set of standard HTTP headers that allow website owners to limit which features of browsers can be used by the page such as camera, microphone, location, full screen etc.
 
-* URL: http://127.0.0.1:5081/%3Fq=ZAP
-  * Node Name: `http://127.0.0.1:5081/ (q)`
+* URL: http://127.0.0.1:5081
+  * Node Name: `http://127.0.0.1:5081`
   * Method: `GET`
   * Parameter: ``
   * Attack: ``
   * Evidence: ``
   * Other Info: ``
-* URL: http://127.0.0.1:5081/Products%3Fq=ZAP
-  * Node Name: `http://127.0.0.1:5081/Products (q)`
+* URL: http://127.0.0.1:5081/Products
+  * Node Name: `http://127.0.0.1:5081/Products`
   * Method: `GET`
   * Parameter: ``
   * Attack: ``
   * Evidence: ``
   * Other Info: ``
-* URL: http://127.0.0.1:5081/Products/Details/2
-  * Node Name: `http://127.0.0.1:5081/Products/Details/2`
+* URL: http://127.0.0.1:5081/Products/Details/1
+  * Node Name: `http://127.0.0.1:5081/Products/Details/1`
   * Method: `GET`
   * Parameter: ``
   * Attack: ``
@@ -499,8 +506,8 @@ At "High" threshold this scan rule will not alert on client or server error resp
   * Evidence: ``
   * Other Info: `This issue still applies to error type pages (401, 403, 500, etc.) as those pages are often still affected by injection issues, in which case there is still concern for browsers sniffing pages away from their actual content type.
 At "High" threshold this scan rule will not alert on client or server error responses.`
-* URL: http://127.0.0.1:5081/css/site.css
-  * Node Name: `http://127.0.0.1:5081/css/site.css`
+* URL: http://127.0.0.1:5081/Products/Details/3
+  * Node Name: `http://127.0.0.1:5081/Products/Details/3`
   * Method: `GET`
   * Parameter: `x-content-type-options`
   * Attack: ``
@@ -568,6 +575,57 @@ This is an informational alert rather than a vulnerability and so there is nothi
 
 #### Source ID: 3
 
+### [ Non-Storable Content ](https://www.zaproxy.org/docs/alerts/10049/)
+
+
+
+##### Informational (Medium)
+
+### Description
+
+The response contents are not storable by caching components such as proxy servers. If the response does not contain sensitive, personal or user-specific information, it may benefit from being stored and cached, to improve performance.
+
+* URL: http://127.0.0.1:5081/Account/Login
+  * Node Name: `http://127.0.0.1:5081/Account/Login`
+  * Method: `GET`
+  * Parameter: ``
+  * Attack: ``
+  * Evidence: `no-store`
+  * Other Info: ``
+
+
+Instances: 1
+
+### Solution
+
+The content may be marked as storable by ensuring that the following conditions are satisfied:
+The request method must be understood by the cache and defined as being cacheable ("GET", "HEAD", and "POST" are currently defined as cacheable)
+The response status code must be understood by the cache (one of the 1XX, 2XX, 3XX, 4XX, or 5XX response classes are generally understood)
+The "no-store" cache directive must not appear in the request or response header fields
+For caching by "shared" caches such as "proxy" caches, the "private" response directive must not appear in the response
+For caching by "shared" caches such as "proxy" caches, the "Authorization" header field must not appear in the request, unless the response explicitly allows it (using one of the "must-revalidate", "public", or "s-maxage" Cache-Control response directives)
+In addition to the conditions above, at least one of the following conditions must also be satisfied by the response:
+It must contain an "Expires" header field
+It must contain a "max-age" response directive
+For "shared" caches such as "proxy" caches, it must contain a "s-maxage" response directive
+It must contain a "Cache Control Extension" that allows it to be cached
+It must have a status code that is defined as cacheable by default (200, 203, 204, 206, 300, 301, 404, 405, 410, 414, 501).
+
+### Reference
+
+
+* [ https://datatracker.ietf.org/doc/html/rfc7234 ](https://datatracker.ietf.org/doc/html/rfc7234)
+* [ https://datatracker.ietf.org/doc/html/rfc7231 ](https://datatracker.ietf.org/doc/html/rfc7231)
+* [ https://www.w3.org/Protocols/rfc2616/rfc2616-sec13.html ](https://www.w3.org/Protocols/rfc2616/rfc2616-sec13.html)
+
+
+#### CWE Id: [ 524 ](https://cwe.mitre.org/data/definitions/524.html)
+
+
+#### WASC Id: 13
+
+#### Source ID: 3
+
 ### [ Session Management Response Identified ](https://www.zaproxy.org/docs/alerts/10112/)
 
 
@@ -612,8 +670,15 @@ This is an informational alert rather than a vulnerability and so there is nothi
 
 The response contents are storable by caching components such as proxy servers, and may be retrieved directly from the cache, rather than from the origin server by the caching servers, in response to similar requests from other users. If the response data is sensitive, personal or user-specific, this may result in sensitive information being leaked. In some cases, this may even result in a user gaining complete control of the session of another user, depending on the configuration of the caching components in use in their environment. This is primarily an issue where "shared" caching servers such as "proxy" caches are configured on the local network. This configuration is typically found in corporate or educational environments, for instance.
 
-* URL: http://127.0.0.1:5081/Products%3Fq=ZAP
-  * Node Name: `http://127.0.0.1:5081/Products (q)`
+* URL: http://127.0.0.1:5081
+  * Node Name: `http://127.0.0.1:5081`
+  * Method: `GET`
+  * Parameter: ``
+  * Attack: ``
+  * Evidence: ``
+  * Other Info: `In the absence of an explicitly specified caching lifetime directive in the response, a liberal lifetime heuristic of 1 year was assumed. This is permitted by rfc7234.`
+* URL: http://127.0.0.1:5081/Products/Details/1
+  * Node Name: `http://127.0.0.1:5081/Products/Details/1`
   * Method: `GET`
   * Parameter: ``
   * Attack: ``
@@ -626,22 +691,15 @@ The response contents are storable by caching components such as proxy servers, 
   * Attack: ``
   * Evidence: ``
   * Other Info: `In the absence of an explicitly specified caching lifetime directive in the response, a liberal lifetime heuristic of 1 year was assumed. This is permitted by rfc7234.`
-* URL: http://127.0.0.1:5081/Products/Details/4
-  * Node Name: `http://127.0.0.1:5081/Products/Details/4`
+* URL: http://127.0.0.1:5081/robots.txt
+  * Node Name: `http://127.0.0.1:5081/robots.txt`
   * Method: `GET`
   * Parameter: ``
   * Attack: ``
   * Evidence: ``
   * Other Info: `In the absence of an explicitly specified caching lifetime directive in the response, a liberal lifetime heuristic of 1 year was assumed. This is permitted by rfc7234.`
-* URL: http://127.0.0.1:5081/css/site.css
-  * Node Name: `http://127.0.0.1:5081/css/site.css`
-  * Method: `GET`
-  * Parameter: ``
-  * Attack: ``
-  * Evidence: ``
-  * Other Info: `In the absence of an explicitly specified caching lifetime directive in the response, a liberal lifetime heuristic of 1 year was assumed. This is permitted by rfc7234.`
-* URL: http://127.0.0.1:5081/lib/bootstrap/bootstrap.min.css
-  * Node Name: `http://127.0.0.1:5081/lib/bootstrap/bootstrap.min.css`
+* URL: http://127.0.0.1:5081/sitemap.xml
+  * Node Name: `http://127.0.0.1:5081/sitemap.xml`
   * Method: `GET`
   * Parameter: ``
   * Attack: ``

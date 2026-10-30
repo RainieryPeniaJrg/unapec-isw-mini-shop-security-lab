@@ -1,8 +1,8 @@
 @model AdminResponse
 @{ ViewData["Title"] = "Administración"; }
-<div class="eyebrow"><i class="fas fa-gauge-high"></i> PANEL ADMIN</div>
+<section class="page-heading"><div class="eyebrow"><i class="fas fa-gauge-high"></i> PANEL ADMIN</div>
 <h1>Administración del laboratorio</h1>
-<p class="lead">Gestión de identidades, productos y pedidos sintéticos de la plataforma demo.</p>
+<p class="lead">Gestión de identidades, productos y pedidos sintéticos de la plataforma demo.</p></section>
 
 <div class="stat-grid">
     <div class="stat-card">
@@ -22,7 +22,7 @@
     </div>
 </div>
 
-<a href="/Seller/Products" class="btn btn-dark mb-4"><i class="fas fa-boxes-stacked"></i> Administrar productos</a>
+<div class="admin-toolbar"><a href="/Seller/Products" class="btn btn-dark"><i class="fas fa-boxes-stacked"></i> Administrar productos</a></div>
 
 <h2><i class="fas fa-users"></i> Usuarios</h2>
 <div class="table-responsive">

@@ -1,8 +1,9 @@
 @model List<ProductResponse>
 @{ ViewData["Title"] = "Gestionar productos"; }
-<div class="eyebrow"><i class="fas fa-boxes-stacked"></i> PANEL DE PRODUCTOS</div>
-<h1>@(User.IsInRole("Admin") ? "Todos los productos" : "Mis productos")</h1>
-<a href="/Seller/Edit" class="btn btn-dark mb-4"><i class="fas fa-plus"></i> Crear producto</a>
+<section class="page-heading with-action">
+    <div><div class="eyebrow"><i class="fas fa-boxes-stacked"></i> PANEL DE PRODUCTOS</div><h1>@(User.IsInRole("Admin") ? "Todos los productos" : "Mis productos")</h1></div>
+    <a href="/Seller/Edit" class="btn btn-dark"><i class="fas fa-plus"></i> Crear producto</a>
+</section>
 <div class="table-responsive">
     <table class="table">
         <thead><tr><th><i class="fas fa-box"></i> Producto</th><th><i class="fas fa-tag"></i> Precio</th><th><i class="fas fa-user"></i> Vendedor</th><th><i class="fas fa-gear"></i> Acciones</th></tr></thead>

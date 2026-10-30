@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="~/lib/bootstrap/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" />
 </head>
-<body>
+<body class="app-shell">
     <div class="topbar">
         <span>Universidad APEC</span> — Seguridad de Software ISW — Laboratorio Demo Educativa
     </div>
@@ -46,7 +46,7 @@
         <i class="fas @(Lab.RedTeam ? "fa-triangle-exclamation" : "fa-flask")"></i>
         @(Lab.RedTeam ? "RED TEAM · Fallas intencionales activas · Solo datos ficticios y loopback" : "Laboratorio local · Escenarios Red Team desactivados")
     </div>
-    <main class="container py-5">@RenderBody()</main>
+    <main class="container page-container">@RenderBody()</main>
     <footer class="container">
         <div class="footer-left"><i class="fas fa-shield-halved"></i> UNAPEC Mini Shop Security Lab · Proyecto Integrador · Fase 1</div>
         <div class="footer-right">UNAPEC · ISW · 2026</div>
